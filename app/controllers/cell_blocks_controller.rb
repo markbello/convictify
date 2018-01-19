@@ -1,0 +1,2 @@
+class CellBlocksController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class IncidentReportsController < ApplicationController
+end
