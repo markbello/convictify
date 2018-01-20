@@ -190,7 +190,7 @@ accusations = [
   "trafficking miscellaneous contraband",
   "possessing a shiv",
   "possessing miscellaneous contraband",
-  "planning and escape",
+  "planning an escape",
   "planning a riot",
   "working out too much",
   "having severe halitosis",
@@ -205,7 +205,9 @@ accusations = [
   "hacking into the NSA",
   "being a gang leader",
   "being a bad friend",
-  "having God-awful taste in music"
+  "having God-awful taste in music",
+  "mis-quoting Bible verses",
+  "thinking impure thoughts"
 ]
 
 
