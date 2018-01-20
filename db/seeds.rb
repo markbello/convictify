@@ -1,3 +1,75 @@
+#CRIME MONIKER ADJECTIVES
+
+adjectives = [
+    "Granny",
+    "Psycho",
+    "Child",
+    "Student",
+    "Hobo",
+    "Priest",
+    "Artist",
+    "Bully",
+    "Dog",
+    "Cat",
+    "Animal",
+    "Cow",
+    "Horse",
+    "Baby",
+    "Con",
+    "Cop",
+    "Dentist",
+    "Doctor",
+    "Therapist",
+    "Janitor",
+    "Doorman"
+  ]
+
+#CRIME MONIKER NOUNS
+
+nouns = [
+    "Burglar",
+    "Arsonist",
+    "Rapist",
+    "Teaser",
+    "Torturer",
+    "Vandal",
+    "Hater",
+    "Poacher",
+    "Pimp",
+    "Murderer",
+    "Killer",
+    "Kindapper",
+    "Conspirator",
+    "Abuser",
+    "Neglector",
+    "Impaler",
+    "Con",
+    "Fraudster",
+    "Shooter",
+    "Harrasser",
+    "Stalker",
+    "Bully",
+    "Terrorist",
+    "Crimelord",
+    "Stabber",
+    "Puncher",
+    "Kicker",
+    "Thief",
+    ""
+  ]
+
+#CRIME MONIKERS
+
+def create_moniker(nouns, adjectives)
+  @noun = nouns[rand(nouns.count)]
+  @adjective = adjectives[rand(adjectives.count)]
+  "The #{@adjective} #{@noun}"
+end
+
+10.times do
+  puts create_moniker(nouns, adjectives)
+end
+
 #CREATE CELL BLOCKS
 CellBlock.create(name: "A", security_rating: 1)
 CellBlock.create(name: "B", security_rating: 2)
@@ -34,9 +106,9 @@ IncidentType.create(name: "Division by Zero", severity_rating: 1)
 puts "Created Incident Types"
 
 #CREATE PRISONERS
-Prisoner.create(first_name: "Prison", last_name: "Official", release_date: "3018-09-10 00:00:00", conviction: "Staff Account", cell_id: 1)
-Prisoner.create(first_name: "Mark", last_name: "Bello", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1)
-Prisoner.create(first_name: "Oleg", last_name: "Chursin", release_date: "2018-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1)
+Prisoner.create(first_name: "Prison", last_name: "Official", release_date: "3018-09-10 00:00:00", conviction: "Staff Account", cell_id: 1, nickname: 'The Prison')
+Prisoner.create(first_name: "Mark", last_name: "Bello", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: create_moniker(nouns, adjectives))
+Prisoner.create(first_name: "Oleg", last_name: "Chursin", release_date: "2018-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: create_moniker(nouns, adjectives))
 
 puts "Created Prisoners"
 
