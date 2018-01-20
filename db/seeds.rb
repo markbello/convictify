@@ -111,6 +111,8 @@ puts "Created Cells"
 
 #CREATE INCIDENT TYPES
 IncidentType.create(name: "Division by Zero", severity_rating: 1)
+IncidentType.create(name: "Assault", severity_rating: 4)
+IncidentType.create(name: "Emotional Abuse", severity_rating: 2)
 
 puts "Created Incident Types"
 
@@ -137,7 +139,126 @@ puts "Created Guards"
 #CREATE INCIDENT REPORTS
 IncidentReport.create(content: "Inmates apprehended while dividing by zero in Cell Block A. Inmate Bello appeared to take the lead, claiming he was \"only de-bugging.\"", guard_id: 1, incident_type_id: 1)
 
-puts "Created Incident Reports"
+#INCIDENT DESCRIPTION GENERATOR
+
+verbs = [
+  ["slapping", "Assault"],
+  ["spitting on", "Assault"],
+  ["punching", "Assault"],
+  ["shanking", "Assault"],
+  ["assaulting", "Assault"],
+  ["intimidating", "Emotional Abuse"],
+  ["saying mean things to", "Emotional Abuse"],
+  ["looking the wrong way at", "Emotional Abuse"],
+  ["thinking unkind thoughts about", "Emotional Abuse"],
+  ["tripping", "Assault"],
+  ["head-butting", "Assault"],
+  ["suplex-ing", "Assault"],
+  ["being less than fully present emotionally for", "Emotional Abuse"],
+]
+
+locations = [
+  "on the lunch line",
+  "on the breakfast line",
+  "on the dinner line",
+  "in the laundry room",
+  "in the showers",
+  "in the cell block common area",
+  "in the prison library",
+  "by the phones",
+  "at the commissary",
+  "in the visiting area",
+  "on the way to the visiting area",
+  "in the defendant's cell",
+  "in the prison yard",
+  "by the weight benches"
+]
+
+plaintiff_responses = [
+  "unresponsive",
+  "refuses to cooperate",
+  "wants to talk to a lawyer",
+  "claims innocence",
+  "wants to call home",
+  "requires immediate medical attention",
+  "could really use a hug right now",
+  "also accuses the defendant of"
+]
+
+accusations = [
+  "trafficking narcotics",
+  "trafficking miscellaneous contraband",
+  "possessing a shiv",
+  "possessing miscellaneous contraband",
+  "planning and escape",
+  "planning a riot",
+  "working out too much",
+  "having severe halitosis",
+  "needing to take a chill pill",
+  "brewing pruno in the toilet",
+  "having a filthy, dirty mouth",
+  "committing crimes against humanity",
+  "talking smack about the other's mama",
+  "having poor boundaries",
+  "planning on shanking a guard",
+  "forgetting their",
+  "hacking into the NSA",
+  "being a gang leader",
+  "being a bad friend",
+  "having God-awful taste in music"
+]
+
+
+def create_description(plaintiff, defendant, timestamp, verbs, locations, plaintiff_responses, accusations)
+  verb = verbs[rand(verbs.count)][0]
+  location = locations[rand(locations.count)]
+
+  location2 = locations[rand(locations.count)]
+  plaintiff_response = plaintiff_responses[rand(plaintiff_responses.count)]
+  defendant_response = accusations[rand(accusations.count)]
+
+  if plaintiff_response == "also accuses the defendant of"
+    plaintiff_accusation = accusations[rand(accusations.count)]
+    plaintiff_response += " #{plaintiff_accusation}"
+    if defendant_response == plaintiff_accusation
+      defendant_response = accusations[rand(accusations.count)]
+    end
+  end
+
+   # description = {}
+   description = "#{defendant} is accused of #{verb} #{plaintiff} #{location} at approximately #{timestamp}. #{defendant} accused #{plaintiff} of #{defendant_response} #{location2} before the incident."
+   # description[:type] = verbs.index(verb)[1]
+   description
+end
+
+40.times do
+  rand1 = rand(2..Prisoner.all.count - 1)
+  rand2 = rand(2..Prisoner.all.count - 1)
+
+  if rand1 == rand2
+    rand2 = rand(2..Prisoner.all.count - 1)
+  end
+
+  plaintiff = Prisoner.all[rand1]
+
+  if !plaintiff.first_name
+    plaintiff = Prisoner.all[rand(2..Prisoner.all.count - 1)]
+  end
+
+  defendant = Prisoner.all[rand2]
+
+  if !defendant.first_name
+    defendant = Prisoner.all[rand(2..Prisoner.all.count - 1)]
+  end
+
+  desc = create_description(plaintiff.first_name, defendant.first_name, "1400 hours", verbs, locations, plaintiff_responses, accusations)
+  puts desc
+  incident = IncidentReport.create(content: desc, guard_id: 1, incident_type_id: 2)
+  IncidentParticipant.create(incident_report_id: incident.id, plaintiff_id: plaintiff.id || 2, defendant_id: defendant.id || 3)
+end
+
+
+puts "Created Incident Reports with Participants"
 
 #CREATE INCIDENT PARTICIPANTS
 
