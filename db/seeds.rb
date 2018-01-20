@@ -1,3 +1,5 @@
+
+
 #CRIME MONIKER ADJECTIVES
 
 adjectives = [
@@ -27,47 +29,54 @@ adjectives = [
 #CRIME MONIKER NOUNS
 
 nouns = [
-    "Burglar",
-    "Arsonist",
-    "Rapist",
-    "Teaser",
-    "Torturer",
-    "Vandal",
-    "Hater",
-    "Poacher",
-    "Pimp",
-    "Murderer",
-    "Killer",
-    "Kindapper",
-    "Conspirator",
-    "Abuser",
-    "Neglector",
-    "Impaler",
-    "Con",
-    "Fraudster",
-    "Shooter",
-    "Harrasser",
-    "Stalker",
-    "Bully",
-    "Terrorist",
-    "Crimelord",
-    "Stabber",
-    "Puncher",
-    "Kicker",
-    "Thief",
-    ""
+    ["Burglar", "Burglary"],
+    ["Arsonist", "Arson"],
+    ["Rapist", "Rape"],
+    ["Teaser", "Harrassment"],
+    ["Torturer", "Assault"],
+    ["Vandal", "Vandalism"],
+    ["Hater", "Harrassment"],
+    ["Poacher", "Poaching"],
+    ["Pimp", "Prostitution"],
+    ["Murderer", "Murder"],
+    ["Killer", "Murder"],
+    ["Kindapper", "Kidnapping"],
+    ["Conspirator", "Conspiracy"],
+    ["Abuser", "Abuse"],
+    ["Neglector", "Negligence"],
+    ["Impaler", "Murder"],
+    ["Con", "Fraud"],
+    ["Fraudster", "Fraud"],
+    ["Shooter", "Murder"],
+    ["Harrasser", "Harrassment"],
+    ["Stalker", "Stalking"],
+    ["Bully", "Harrassment"],
+    ["Terrorist", "Terrorism"],
+    ["Crimelord", "Conspiracy"],
+    ["Stabber", "Murder"],
+    ["Puncher", "Assault"],
+    ["Kicker", "Assault"],
+    ["Thief", "Theft"],
+    ["", "Human Trafficking"],
+    ["", "Division by Zero"],
+    ["", "Late Blog Sumbission"],
+    ["", "Trespassing"],
+    ["", "Public Indecency"],
+    ["", "Drug Trafficking"],
+    ["", "Burnt the Casserole"],
+    ["", "Shoplifting"],
+    ["", "Failure to Signal"],
+    ["", "Tax Evasion"],
+    ["", "DWI"],
+    ["", "Crimes Against Humanity"],
   ]
 
 #CRIME MONIKERS
 
-def create_moniker(nouns, adjectives)
-  @noun = nouns[rand(nouns.count)]
+def create_moniker(name, nouns, adjectives)
+  @noun = nouns[rand(nouns.count)][0]
   @adjective = adjectives[rand(adjectives.count)]
-  "The #{@adjective} #{@noun}"
-end
-
-10.times do
-  puts create_moniker(nouns, adjectives)
+  "#{name} the #{@adjective} #{@noun}"
 end
 
 #CREATE CELL BLOCKS
@@ -96,7 +105,7 @@ def seed_x_cells_per_block(x)
   end
 end
 
-seed_x_cells_per_block(15)
+seed_x_cells_per_block(10)
 
 puts "Created Cells"
 
@@ -107,8 +116,16 @@ puts "Created Incident Types"
 
 #CREATE PRISONERS
 Prisoner.create(first_name: "Prison", last_name: "Official", release_date: "3018-09-10 00:00:00", conviction: "Staff Account", cell_id: 1, nickname: 'The Prison')
-Prisoner.create(first_name: "Mark", last_name: "Bello", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: create_moniker(nouns, adjectives))
-Prisoner.create(first_name: "Oleg", last_name: "Chursin", release_date: "2018-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: create_moniker(nouns, adjectives))
+Prisoner.create(first_name: "Mark", last_name: "Bello", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: create_moniker("Mark", nouns, adjectives))
+Prisoner.create(first_name: "Oleg", last_name: "Chursin", release_date: "2018-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: create_moniker("Oleg", nouns, adjectives))
+
+50.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  cell_id = rand(1 .. 10)
+  Prisoner.create(first_name: first_name, last_name:last_name, conviction: nouns[rand(nouns.count)][1], release_date: "2018-09-10 00:00:00", cell_id: cell_id, nickname: create_moniker(first_name, adjectives, nouns))
+  puts "Imprisoned #{create_moniker(first_name, nouns, adjectives)}"
+end
 
 puts "Created Prisoners"
 
