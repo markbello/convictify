@@ -1,0 +1,2 @@
+class GuardPrisonersController < ApplicationController
+end

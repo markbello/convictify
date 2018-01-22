@@ -64,6 +64,9 @@ puts "Created Guards"
 IncidentReport.create(content: "Inmates apprehended while dividing by zero in Cell Block A. Inmate Bello appeared to take the lead, claiming he was \"only de-bugging.\"", guard_id: 1, incident_type_id: 1)
 
 40.times do
+
+  prisoners_array = []
+
   rand1 = rand(2..Prisoner.all.count - 1)
   rand2 = rand(2..Prisoner.all.count - 1)
 
@@ -71,10 +74,11 @@ IncidentReport.create(content: "Inmates apprehended while dividing by zero in Ce
     rand2 = rand(2..Prisoner.all.count - 1)
   end
 
+
   plaintiff = Prisoner.all[rand1]
 
   if !plaintiff.first_name
-    plaintiff = Prisoner.all[rand(2..Prisoner.all.count - 1)]
+    plaintiff = Prisoner.all[rand(1..Prisoner.all.count - 1)]
   end
 
   defendant = Prisoner.all[rand2]
@@ -83,10 +87,25 @@ IncidentReport.create(content: "Inmates apprehended while dividing by zero in Ce
     defendant = Prisoner.all[rand(2..Prisoner.all.count - 1)]
   end
 
+  prisoners_array << plaintiff
+  prisoners_array << defendant
+
+
   desc = seed_generator.create_description(plaintiff.first_name, defendant.first_name, "1400 hours")
   puts desc
   incident = IncidentReport.create(content: desc, guard_id: 1, incident_type_id: 2)
   IncidentParticipant.create(incident_report_id: incident.id, plaintiff_id: plaintiff.id || 2, defendant_id: defendant.id || 3)
+
+  incident_guard = Guard.find(1)
+
+  prisoners_array.each do |prisoner|
+    if incident_guard.prisoners.include?(prisoner)
+      puts "Guard has prisoner"
+    else
+      GuardPrisoner.create(guard_id: incident_guard.id, prisoner_id: prisoner.id)
+      puts "Added prisoner to Guard"
+    end
+  end
 end
 
 
@@ -98,3 +117,24 @@ IncidentParticipant.create(incident_report_id: 1, defendant_id: 2, plaintiff_id:
 IncidentParticipant.create(incident_report_id: 1, defendant_id: 3, plaintiff_id: 1)
 
 puts "Created Incident Participants"
+
+#TEST FOR EXISTING GUARD_PRISONERS
+
+existing_prisoners_array = []
+
+mark = Prisoner.find(2)
+oleg = Prisoner.find(3)
+guard = Guard.first
+
+existing_prisoners_array << mark
+existing_prisoners_array << oleg
+
+existing_prisoners_array.each do |prisoner|
+  #byebug
+  if guard.prisoners.include?(prisoner)
+    puts "Guard has existing prisoner (failed)"
+  else
+    guard.prisoners << prisoner
+    puts "Added prisoner to Guard (passed)"
+  end
+end
