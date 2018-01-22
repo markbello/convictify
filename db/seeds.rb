@@ -44,8 +44,8 @@ Prisoner.create(first_name: "Mark", last_name: "Bello", release_date: "2018-09-1
 Prisoner.create(first_name: "Oleg", last_name: "Chursin", release_date: "2018-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Oleg"))
 
 50.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
+  first_name = FactoryHelper::Name.male_first_name
+  last_name = FactoryHelper::Name.last_name
   cell_id = rand(1 .. 10)
   nickname = seed_generator.create_moniker(first_name)
   crime = seed_generator.assign_crime
