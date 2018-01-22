@@ -1,0 +1,19 @@
+<%= form_for @incident_report do |f|%>
+  <%= f.label :guard_id %>
+  <%= f.text_field :guard_id %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.label :incident_type_id %>
+  <%= f.text_field :incident_type_id %>
+  <%= f.label :incident_participants %>
+  <ul>
+    <%= f.fields_for :incident_participants do |incident_participant| %>
+    <li>
+      Plaintiff: <%= incident_participant.text_field :plaintiff_id %>
+      Defendant: <%= incident_participant.text_field :defendant_id %>
+    </li>
+    <% end %>
+  </ul>
+
+  <%= f.submit %>
+<% end %>
