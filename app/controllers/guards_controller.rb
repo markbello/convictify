@@ -14,10 +14,12 @@ class GuardsController < ApplicationController
 
   def new
     @guard = Guard.new
+    @cell_blocks = CellBlock.all
   end
 
   def create
-    byebug
+    guard_params[:first_name].capitalize!
+    guard_params[:last_name].capitalize!
     @guard = Guard.create(guard_params)
 
     if @guard.valid?
@@ -57,7 +59,6 @@ class GuardsController < ApplicationController
       :first_name,
       :last_name,
       :cell_block_id,
-      :is_admin,
       :username,
       :password,
       :password_confirmation

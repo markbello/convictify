@@ -1,0 +1,7 @@
+<h1>Cells</h1>
+
+<ul>
+  <% @cells.each do |cell| %>
+  <li><%= link_to cell.name, cell %></li>
+  <% end %>
+</ul>

@@ -15,10 +15,3 @@
     <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
   <% end %>
 </ul>
-<p><strong>Admin Rights:</strong>
-  <% if @guard.is_admin == true %>
-    <%= "Guard has full Admin rights."  %>
-    <% else %>
-    <%= "Guard has no Admin right." %>
-  <% end %>
-</p>

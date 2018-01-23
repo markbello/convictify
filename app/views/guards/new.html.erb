@@ -7,10 +7,7 @@
   <%= f.text_field :last_name %>
   <br/>
   <%= f.label :cell_block_id %>
-  <%= f.text_field :cell_block_id %>
-  <br/>
-  <%= f.label :is_admin %>
-  <%= f.text_field :is_admin %>
+  <%= f.collection_select :cell_block_id, @cell_blocks, :id, :name %>
   <br/>
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -19,5 +16,5 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
   <%= f.submit %>
-  
+
 <% end %>
