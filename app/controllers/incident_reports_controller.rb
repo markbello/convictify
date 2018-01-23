@@ -9,11 +9,13 @@ class IncidentReportsController < ApplicationController
   end
 
   def show
+    @guards = Guard.all
+    @incident_types = IncidentType.all
+    @prisoners = Prisoner.all
   end
 
   def new
     @incident_report = IncidentReport.new
-
   end
 
   def create
@@ -34,7 +36,7 @@ class IncidentReportsController < ApplicationController
   end
 
   def edit
-    render :edit #?
+
   end
 
   def update

@@ -1,2 +1,24 @@
 <h1>Incident Report</h1>
 <p><%= @incident_report.content %></p>
+
+<h2>Incident Type</h2>
+<ul>
+  <% @incident_types.each do |incident_type| %>
+  <li><%= incident_type.name %> | <%= incident_type.severity_rating %></li>
+  <% end %>
+</ul>
+
+<h2>Guards</h2>
+<ul>
+  <% @guards.each do |guard| %>
+  <li><%= link_to guard.name, guard %></li>
+  <% end %>
+</ul>
+
+
+<h2>Prisoners</h2>
+<ul>
+  <% @prisoners.each do |prisoner| %>
+  <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
+  <% end %>
+</ul>

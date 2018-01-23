@@ -1,0 +1,7 @@
+<h1>Incident Reports</h1>
+
+<ul>
+  <% @incident_reports.each do |incident_report| %>
+  <li><%= link_to incident_report.content, incident_report %></li>
+  <% end %>
+</ul>
