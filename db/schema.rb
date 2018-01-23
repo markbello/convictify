@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122183903) do
+ActiveRecord::Schema.define(version: 20180123161756) do
 
   create_table "cell_blocks", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180122183903) do
     t.integer "cell_block_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_admin", default: false
     t.index ["cell_block_id"], name: "index_guards_on_cell_block_id"
   end
 

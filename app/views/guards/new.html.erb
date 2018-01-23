@@ -1,0 +1,17 @@
+<h1>Create New Guard</h1>
+
+<%= form_for @guard do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <br/>
+  <%= f.label :cell_block_id %>
+  <%= f.text_field :cell_block_id %>
+  <br/>
+  <%= f.label :is_admin %>
+  <%= f.text_field :is_admin %>
+  <br/>
+  <%= f.submit %>
+
+<% end %>

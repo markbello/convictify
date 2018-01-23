@@ -6,6 +6,7 @@
 <br/>
 <p>Cell ID: <%= @prisoner.cell_id %></p>
 <br/>
+<p>Guard:</p>
 <ul>
   <% @prisoner.guards.each do |guard| %>
     <li><%= link_to guard.name, guard %></li>
