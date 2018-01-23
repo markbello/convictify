@@ -1,0 +1,7 @@
+<h1>Prisoners</h1>
+
+<ul>
+  <% @prisoners.each do |prisoner| %>
+    <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
+  <% end %>
+</ul>
