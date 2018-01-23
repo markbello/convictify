@@ -4,7 +4,7 @@
 <p><%= @prisoner.conviction %></p>
 <p><%= @prisoner.formatted_release_date %></p>
 <br/>
-<p><%= @prisoner.cell_id %></p>
+<p>Cell ID: <%= @prisoner.cell_id %></p>
 <br/>
 <ul>
   <% @prisoner.guards.each do |guard| %>

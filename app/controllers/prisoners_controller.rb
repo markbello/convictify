@@ -33,7 +33,7 @@ class PrisonersController < ApplicationController
   end
 
   def update
-    byebug
+    # byebug
     @prisoner.update(prisoner_params)
 
     if @prisoner.valid?
