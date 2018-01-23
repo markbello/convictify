@@ -1,21 +1,82 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 
-body{
+
+/*****************
+FONTS
+*****************/
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 700;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+
+
+/*****************
+ELEMENTS
+*****************/
+ul {
+  list-style: none;
+}
+
+input {
+  display: block;
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+.ui.form div input{
+  background: rgba(242, 113, 29, .3)
+}
+
+#guard_cell_block_id {
+  height: 3em;
+}
+
+
+/*****************
+BLOCKS
+*****************/
+
+.convict-container{
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+}
+
+.convict-form {
+  align-self: center;
+  justify-content: space-evenly;
+  /* height: 60vh; */
+  width: 600px;
+}
+
+.convict-form-fields{
+  justify-content: space-around;
+  width: 80%;
+}
+
+
+.convict-top-margin{
+  margin-top: 40px;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column{
   display: flex;
   flex-direction: column;
+}
+
+.align-center{
+  align-items: center;
 }
