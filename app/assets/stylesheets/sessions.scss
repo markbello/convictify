@@ -1,0 +1,16 @@
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background: black;
+}
+
+.login-box{
+  display:flex;
+  flex-direction: column;
+  height: 500px;
+  width: 500px;
+  background: orange;
+  align-self: center;
+}
