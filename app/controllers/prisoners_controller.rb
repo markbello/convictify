@@ -17,7 +17,7 @@ class PrisonersController < ApplicationController
   end
 
   def create
-    byebug
+    #byebug
     @prisoner = Prisoner.create(prisoner_params)
 
     if @prisoner.valid?

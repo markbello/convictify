@@ -1,21 +1,33 @@
-<h1>Create New Prisoner</h1>
+<div class="convict-container flex-column">
 
-<%= form_for @prisoner do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <br/>
-  <%= f.label :nickname %>
-  <%= f.text_field :nickname %>
-  <br/>
-  <%= f.label :conviction %>
-  <%= f.text_field :conviction %>
-  <%= f.label :release_date %>
-  <%= f.text_field :release_date %>
-  <br/>
-  <%= f.label :cell_id %>
-  <%= f.text_field :cell_id %>
-  <br/>
-  <%= f.submit %>
-<% end %>
+  <div class="ui raised padded segment flex-column align-center">
+
+  <h1>Create New Prisoner</h1>
+
+    <%= form_for @prisoner, html: {class: "ui form convict-form"} do |f| %>
+      <div class="flex-column align-center">
+        <div class="flex-row convict-form-fields">
+          <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name %>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
+            <%= f.label :nickname %>
+            <%= f.text_field :nickname %>
+          </div>
+          <div>
+            <%= f.label :conviction %>
+            <%= f.text_field :conviction %>
+            <%= f.label :release_date %>
+            <%= f.text_field :release_date %>
+            <%= f.label :cell_id %>
+            <%= f.text_field :cell_id %>
+          </div>
+        </div>
+        <div class="convict-top-margin">
+          <%= f.submit class: 'ui big orange button padded' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
