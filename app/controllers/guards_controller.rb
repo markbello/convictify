@@ -31,7 +31,7 @@ class GuardsController < ApplicationController
   end
 
   def edit
-    render :edit
+    @cell_blocks = CellBlock.all
   end
 
   def update

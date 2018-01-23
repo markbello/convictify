@@ -1,14 +1,33 @@
-<h1>Edit New Guard</h1>
+<div class="convict-container flex-column">
 
-<%= form_for @guard do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <br/>
-  <%= f.label :cell_block_id %>
-  <%= f.text_field :cell_block_id %>
-  <br/>
-  <%= f.submit %>
+  <div class="ui raised padded segment flex-column align-center">
 
-<% end %>
+  <h1>Edit Guard</h1>
+
+    <%= form_for @guard, html: {class: "ui form convict-form"} do |f| %>
+      <div class="flex-column align-center">
+        <div class="flex-row convict-form-fields">
+          <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name %>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
+            <%= f.label :cell_block_id %>
+            <%= f.collection_select :cell_block_id, @cell_blocks, :id, :name %>
+          </div>
+          <div>
+            <%= f.label :username %>
+            <%= f.text_field :username %>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+        <div class="convict-top-margin">
+          <%= f.submit class: 'ui big orange button padded' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

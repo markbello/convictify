@@ -2,6 +2,6 @@
 
 <ul>
   <% @prisoners.each do |prisoner| %>
-    <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
+      <li><%= link_to prisoner.name, prisoner %> | <%= prisoner.nickname %></li>
   <% end %>
 </ul>
