@@ -34,7 +34,7 @@ class IncidentReportsController < ApplicationController
   end
 
   def edit
-    render :edit
+    render :edit #?
   end
 
   def update
@@ -49,7 +49,7 @@ class IncidentReportsController < ApplicationController
   end
 
   def destroy
-    @incident_report.delete
+    @incident_report.destroy
 
     redirect_to incident_reports_path
   end
