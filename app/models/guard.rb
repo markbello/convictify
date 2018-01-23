@@ -1,4 +1,5 @@
 class Guard < ApplicationRecord
+  has_secure_password
   belongs_to :cell_block
   has_many :incident_reports
   has_many :guard_prisoners

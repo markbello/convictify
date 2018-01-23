@@ -1,6 +1,7 @@
 class GuardsController < ApplicationController
 
   before_action :set_guard, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:new, :create, :show]
 
   def index
     @guards = Guard.all
@@ -56,7 +57,10 @@ class GuardsController < ApplicationController
       :first_name,
       :last_name,
       :cell_block_id,
-      :is_admin
+      :is_admin,
+      :username,
+      :password,
+      :password_confirmation
     )
 
     # Use the below if integrating an array of foreign keys
