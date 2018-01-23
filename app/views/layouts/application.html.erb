@@ -18,32 +18,33 @@
     <!-- <div class="flex-row"> -->
       <div class="ui left fixed vertical menu" >
         <div class="item">
+          <img src="<%= asset_path 'convictify-logo.svg' %>" max-width="250px" style="margin-top:20px;margin-bottom:20px;"/>
+        </div>
+        <div class="item">
           <div class="header">Prisoners</div>
           <div class="menu">
-            <a class="item">Enterprise</a>
-            <a class="item">Consumer</a>
+            <a class="item" href="<% prisoners_path %>">View All</a>
+            <a class="item" href"<% new_prisoner_path %>">New Prisoner</a>
           </div>
         </div>
         <div class="item">
           <div class="header">Cell Blocks</div>
           <div class="menu">
-            <a class="item">Rails</a>
-            <a class="item">Python</a>
-            <a class="item">PHP</a>
+            <a class="item" href="<% cell_blocks_path %>">View All</a>
           </div>
         </div>
         <div class="item">
           <div class="header">Incident Reports</div>
           <div class="menu">
-            <a class="item">Shared</a>
-            <a class="item">Dedicated</a>
+            <a class="item" href="<% incident_reports_path %>">View All</a>
+            <a class="item" href="<% new_incident_report_path %>">Create New</a>
           </div>
         </div>
         <div class="item">
-          <div class="header">Profile</div>
+          <div class="header">Guards</div>
           <div class="menu">
-            <a class="item">E-mail Support</a>
-            <a class="item">FAQs</a>
+            <a class="item">My Profile</a>
+            <a class="item">Logout</a>
           </div>
         </div>
       </div>
