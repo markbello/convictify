@@ -2,15 +2,56 @@
 <html>
   <head>
     <title>Convictify</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/button.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/segment.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/input.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/form.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/menu.min.css">
     <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <!-- <div class="flex-row"> -->
+      <div class="ui left fixed vertical menu" >
+        <div class="item">
+          <div class="header">Prisoners</div>
+          <div class="menu">
+            <a class="item">Enterprise</a>
+            <a class="item">Consumer</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="header">Cell Blocks</div>
+          <div class="menu">
+            <a class="item">Rails</a>
+            <a class="item">Python</a>
+            <a class="item">PHP</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="header">Incident Reports</div>
+          <div class="menu">
+            <a class="item">Shared</a>
+            <a class="item">Dedicated</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="header">Profile</div>
+          <div class="menu">
+            <a class="item">E-mail Support</a>
+            <a class="item">FAQs</a>
+          </div>
+        </div>
+      </div>
+      <div class="convict-index-show-container">
+      <%= yield %>
+    </div>
+  <!--     </div> -->
+
+
   </body>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>

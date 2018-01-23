@@ -9,7 +9,7 @@ FONTS
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 h1 {
@@ -31,8 +31,24 @@ input {
   margin-top: 20px;
 }
 
-.ui.form div input{
-  background: rgba(242, 113, 29, .3)
+.ui.form input[type='text']:focus, .ui.form input[type='password']:focus{
+  border-color: rgba(242, 113, 29, 1);
+  font-family: "Open Sans", sans-serif;
+}
+
+select:focus{
+  outline-color: rgba(242, 113, 29, 1);
+}
+
+.ui.form div input[type='submit']{
+  background: rgba(242, 113, 29, 1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+.ui.form div input[type='submit']:hover{
+  background: #d85019;
+  color: white;
 }
 
 #guard_cell_block_id {
@@ -44,10 +60,14 @@ input {
 BLOCKS
 *****************/
 
-.convict-container{
+.convict-new-edit-container{
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.convict-index-show-container{
+  margin-left: 300px;
 }
 
 .convict-form {
