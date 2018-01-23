@@ -8,4 +8,8 @@ class Prisoner < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def formatted_release_date
+    self.release_date.strftime "%B %d, %Y"
+  end
+
 end

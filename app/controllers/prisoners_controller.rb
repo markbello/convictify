@@ -2,7 +2,7 @@ class PrisonersController < ApplicationController
   #Find and replace all Prisoner, prisoner, and prisoners with the Prisoner name
 #Remember to add resources :prisoners, only [:index, etc.] to config/routes.rb
 
-  before_action :set_prisoner, only [:show, :edit, :update, :destroy]
+  before_action :set_prisoner, only: [:show, :edit, :update, :destroy]
 
   def index
     set_prisoners

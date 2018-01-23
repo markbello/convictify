@@ -1,0 +1,13 @@
+<h1><%= @prisoner.name %></h1>
+<em><%= @prisoner.nickname %></em>
+<br/>
+<p><%= @prisoner.conviction %></p>
+<p><%= @prisoner.formatted_release_date %></p>
+<br/>
+<p><%= @prisoner.cell_id %></p>
+<br/>
+<ul>
+  <% @prisoner.guards.each do |guard| %>
+    <li><%= link_to guard.name, guard %></li>
+  <% end %>
+</ul>
