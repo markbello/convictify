@@ -1,0 +1,24 @@
+<h1><%= @guard.name %></h1>
+<p>Cell Block ID: <%= @guard.cell_block_id %></p>
+</br>
+<p>Incident Reports:</p>
+<ul>
+  <% @guard.incident_reports.each do |incident_report| %>
+    <li><%= link_to incident_report.content, incident_report %></li>
+  <% end %>
+</ul>
+</br>
+
+<p>Prisoners:</p>
+<ul>
+  <% @guard.prisoners.each do |prisoner| %>
+    <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
+  <% end %>
+</ul>
+<p><strong>Admin Rights:</strong>
+  <% if @guard.is_admin == true %>
+    <%= "Guard has full Admin rights."  %>
+    <% else %>
+    <%= "Guard has no Admin right." %>
+  <% end %>
+</p>
