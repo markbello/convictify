@@ -22,7 +22,7 @@ def seed_x_cells_per_block(x)
   end
 end
 
-seed_x_cells_per_block(10)
+seed_x_cells_per_block(5)
 
 puts "Created Cells"
 
@@ -38,13 +38,15 @@ Prisoner.create(first_name: "Prison", last_name: "Official", intake_date: "2018-
 Prisoner.create(first_name: "Mark", last_name: "Bello", intake_date: "2018-01-24 00:00:00", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Mark"))
 Prisoner.create(first_name: "Oleg", last_name: "Chursin", intake_date: "2018-01-24 00:00:00", release_date: "2019-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Oleg"))
 
-50.times do
+cell_counter = 1
+25.times do
   first_name = FactoryHelper::Name.male_first_name
   last_name = FactoryHelper::Name.last_name
   nickname = seed_generator.create_moniker(first_name)
   crime = seed_generator.assign_crime
   release_date = Faker::Time.forward(3650, :morning)
-  cell_id = rand(1..(Cell.all.count - 1))
+  cell_id = cell_counter
+  cell_counter += 1
   prisoner = Prisoner.create(first_name: first_name, last_name:last_name, conviction: crime, intake_date: Time.now, release_date: release_date, cell_id: cell_id, nickname: nickname)
   puts "Convictified #{prisoner.nickname}"
 end
@@ -93,9 +95,11 @@ IncidentReport.create(content: "Inmates apprehended while dividing by zero in Ce
   incident_time = Faker::Time.backward(1)
   desc = seed_generator.create_description(plaintiff.first_name, defendant.first_name, incident_time)
   puts desc
-  incident = IncidentReport.create(content: desc, guard_id: Guard.first, incident_type_id: 2)
-  IncidentParticipant.create(incident_report_id: incident.id, plaintiff_id: plaintiff.id || 2, defendant_id: defendant.id || 3)
-
+  incident = IncidentReport.create(content: desc, guard_id: 1, incident_type_id: 1)
+  IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: plaintiff.id, prisoner_type: 1)
+  IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: defendant.id, prisoner_type: 2)
+  # PrisonerIncident.find_or_create_by(incident_report_id: incident.id, prisoner_id: plaintiff.id)
+  # PrisonerIncident.find_or_create_by(incident_report_id: incident.id, prisoner_id: defendant.id)
   incident_guard = Guard.first
 
   prisoners_array.each do |prisoner|
@@ -109,32 +113,12 @@ IncidentReport.create(content: "Inmates apprehended while dividing by zero in Ce
 end
 
 
+
 puts "Created Incident Reports with Participants"
 
 #CREATE INCIDENT PARTICIPANTS
 
-IncidentParticipant.create(incident_report_id: 1, defendant_id: 2, plaintiff_id: 1)
-IncidentParticipant.create(incident_report_id: 1, defendant_id: 3, plaintiff_id: 1)
+# IncidentParticipant.create(incident_report_id: 1, defendant_id: 2, plaintiff_id: 1)
+# IncidentParticipant.create(incident_report_id: 1, defendant_id: 3, plaintiff_id: 1)
 
 puts "Created Incident Participants"
-
-#TEST FOR EXISTING GUARD_PRISONERS
-
-existing_prisoners_array = []
-
-mark = Prisoner.find(2)
-oleg = Prisoner.find(3)
-guard = Guard.first
-
-existing_prisoners_array << mark
-existing_prisoners_array << oleg
-
-existing_prisoners_array.each do |prisoner|
-  #byebug
-  if guard.prisoners.include?(prisoner)
-    puts "Guard has existing prisoner (failed)"
-  else
-    guard.prisoners << prisoner
-    puts "Added prisoner to Guard (passed)"
-  end
-end

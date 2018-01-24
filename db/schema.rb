@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124162812) do
+ActiveRecord::Schema.define(version: 20180124203800) do
 
   create_table "cell_blocks", force: :cascade do |t|
     t.string "name"
@@ -49,13 +49,12 @@ ActiveRecord::Schema.define(version: 20180124162812) do
 
   create_table "incident_participants", force: :cascade do |t|
     t.integer "incident_report_id"
-    t.integer "defendant_id"
-    t.integer "plaintiff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["defendant_id"], name: "index_incident_participants_on_defendant_id"
+    t.integer "prisoner_type"
+    t.integer "prisoner_id"
     t.index ["incident_report_id"], name: "index_incident_participants_on_incident_report_id"
-    t.index ["plaintiff_id"], name: "index_incident_participants_on_plaintiff_id"
+    t.index ["prisoner_id"], name: "index_incident_participants_on_prisoner_id"
   end
 
   create_table "incident_reports", force: :cascade do |t|
@@ -73,6 +72,15 @@ ActiveRecord::Schema.define(version: 20180124162812) do
     t.integer "severity_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prisoner_incidents", force: :cascade do |t|
+    t.integer "incident_report_id"
+    t.integer "prisoner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_report_id"], name: "index_prisoner_incidents_on_incident_report_id"
+    t.index ["prisoner_id"], name: "index_prisoner_incidents_on_prisoner_id"
   end
 
   create_table "prisoners", force: :cascade do |t|

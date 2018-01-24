@@ -22,12 +22,17 @@ class IncidentReportsController < ApplicationController
     #byebug
     @plaintiff = params[:incident_report][:incident_participants][:plaintiff_id]
     @defendant = params[:incident_report][:incident_participants][:defendant_id]
-    @incident_participants = IncidentParticipant.new(plaintiff_id: @plaintiff, defendant_id: @defendant)
-    @incident_report = IncidentReport.create(incident_report_params)
-    #byebug
+    @incident_participant_plaintiff = IncidentParticipant.new(prisoner_id: @plaintiff, prisoner_type: 1)
+    @incident_participant_defendant = IncidentParticipant.new(prisoner_id: @defendant, prisoner_type: 2)
+    byebug
+    @incident_report = IncidentReport.new(incident_report_params)
+    @incident_report[:guard_id] = 1
     @incident_participants[:incident_report_id] = @incident_report.id
     @incident_participants.save
     if @incident_report.valid?
+      byebug
+      #PrisonerIncident.find_or_create_by(incident_report_id: @incident_report.id, prisoner_id: @plaintiff)
+      #PrisonerIncident.find_or_create_by(incident_report_id: @incident_report.id, prisoner_id: @defendant)
       redirect_to @incident_report
     else
       flash[:error] = @incident_report.errors.full_messages
@@ -62,7 +67,9 @@ class IncidentReportsController < ApplicationController
     params.require(:incident_report).permit(
       :guard_id,
       :content,
-      :incident_type_id
+      :incident_type_id,
+      :incident_participants => [:defendant_id, :plaintiff_id]
+      #:groundtruth => [:type, :coordinates => []
     )
 
 

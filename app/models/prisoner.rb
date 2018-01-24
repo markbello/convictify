@@ -1,7 +1,8 @@
 
 class Prisoner < ApplicationRecord
   belongs_to :cell
-  has_many :incident_reports
+  has_many :incident_participants
+  has_many :incident_reports, through: :incident_participants
   has_many :guard_prisoners
   has_many :guards, through: :guard_prisoners
 
