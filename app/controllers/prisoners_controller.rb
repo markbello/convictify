@@ -9,7 +9,6 @@ class PrisonersController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -18,9 +17,11 @@ class PrisonersController < ApplicationController
 
   def create
     #byebug
-    @prisoner = Prisoner.create(prisoner_params)
+    @prisoner = Prisoner.new(prisoner_params)
+    @prisoner.convictify(prisoner_params[:first_name])
 
     if @prisoner.valid?
+      byebug
       redirect_to @prisoner
     else
       flash[:error] = @prisoner.errors.full_messages
@@ -55,11 +56,7 @@ class PrisonersController < ApplicationController
   def prisoner_params
     params.require(:prisoner).permit(
       :first_name,
-      :last_name,
-      :release_date,
-      :conviction,
-      :nickname,
-      :cell_id
+      :last_name
     )
 
     # Use the below if integrating an array of foreign keys
