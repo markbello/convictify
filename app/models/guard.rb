@@ -5,7 +5,7 @@ class Guard < ApplicationRecord
   has_many :guard_prisoners
   has_many :prisoners, through: :guard_prisoners
 
-  def name
+  def full_name
     "#{first_name} #{last_name}"
   end
 

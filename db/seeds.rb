@@ -7,11 +7,6 @@ CellBlock.create(name: "B", security_rating: 2)
 CellBlock.create(name: "C", security_rating: 3)
 CellBlock.create(name: "D", security_rating: 4)
 CellBlock.create(name: "E", security_rating: 5)
-CellBlock.create(name: "F", security_rating: 6)
-CellBlock.create(name: "G", security_rating: 7)
-CellBlock.create(name: "H", security_rating: 8)
-CellBlock.create(name: "I", security_rating: 9)
-CellBlock.create(name: "J", security_rating: 10)
 
 puts "Created Cell Blocks"
 
@@ -39,24 +34,29 @@ IncidentType.create(name: "Emotional Abuse", severity_rating: 2)
 puts "Created Incident Types"
 
 #CREATE PRISONERS
-Prisoner.create(first_name: "Prison", last_name: "Official", release_date: "3018-09-10 00:00:00", conviction: "Staff Account", cell_id: 1, nickname: 'The Prison')
-Prisoner.create(first_name: "Mark", last_name: "Bello", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Mark"))
-Prisoner.create(first_name: "Oleg", last_name: "Chursin", release_date: "2018-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Oleg"))
+Prisoner.create(first_name: "Prison", last_name: "Official", intake_date: "2018-01-24 00:00:00", release_date: "3018-09-10 00:00:00", conviction: "Staff Account", cell_id: 1, nickname: 'The Prison')
+Prisoner.create(first_name: "Mark", last_name: "Bello", intake_date: "2018-01-24 00:00:00", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Mark"))
+Prisoner.create(first_name: "Oleg", last_name: "Chursin", intake_date: "2018-01-24 00:00:00", release_date: "2019-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Oleg"))
 
 50.times do
   first_name = FactoryHelper::Name.male_first_name
   last_name = FactoryHelper::Name.last_name
-  cell_id = rand(1 .. 10)
   nickname = seed_generator.create_moniker(first_name)
   crime = seed_generator.assign_crime
-  prisoner = Prisoner.create(first_name: first_name, last_name:last_name, conviction: crime, release_date: "2018-09-10 00:00:00", cell_id: cell_id, nickname: nickname)
-  puts "Imprisoned #{prisoner.nickname}"
+  release_date = Faker::Time.forward(3650, :morning)
+  cell_id = rand(1..(Cell.all.count - 1))
+  prisoner = Prisoner.create(first_name: first_name, last_name:last_name, conviction: crime, intake_date: Time.now, release_date: release_date, cell_id: cell_id, nickname: nickname)
+  puts "Convictified #{prisoner.nickname}"
 end
 
-puts "Created Prisoners"
+puts "Convictified Prisoners"
 
 #CREATE GUARDS
-Guard.create(first_name: "Bob", last_name: "Smith", cell_block_id: 1)
+Guard.create(first_name: "Bob", last_name: "Smith", cell_block_id: 1, username: "g1", password_digest: "password")
+Guard.create(first_name: "Joe", last_name: "Clay", cell_block_id: 2, username: "g2", password_digest: "password")
+Guard.create(first_name: "Victor", last_name: "Nabokov", cell_block_id: 3, username: "g3", password_digest: "password")
+Guard.create(first_name: "Jason", last_name: "Newstead", cell_block_id: 4, username: "g4", password_digest: "password")
+Guard.create(first_name: "Frank", last_name: "Wright", cell_block_id: 5, username: "g5", password_digest: "password")
 
 puts "Created Guards"
 
@@ -90,13 +90,13 @@ IncidentReport.create(content: "Inmates apprehended while dividing by zero in Ce
   prisoners_array << plaintiff
   prisoners_array << defendant
 
-
-  desc = seed_generator.create_description(plaintiff.first_name, defendant.first_name, "1400 hours")
+  incident_time = Faker::Time.backward(1)
+  desc = seed_generator.create_description(plaintiff.first_name, defendant.first_name, incident_time)
   puts desc
-  incident = IncidentReport.create(content: desc, guard_id: 1, incident_type_id: 2)
+  incident = IncidentReport.create(content: desc, guard_id: Guard.first, incident_type_id: 2)
   IncidentParticipant.create(incident_report_id: incident.id, plaintiff_id: plaintiff.id || 2, defendant_id: defendant.id || 3)
 
-  incident_guard = Guard.find(1)
+  incident_guard = Guard.first
 
   prisoners_array.each do |prisoner|
     if incident_guard.prisoners.include?(prisoner)

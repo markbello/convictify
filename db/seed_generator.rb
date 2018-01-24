@@ -170,8 +170,8 @@ class SeedGenerator
       end
     end
 
-
-     description = "#{defendant} is accused of #{verb[0]} #{plaintiff} #{location} at approximately #{timestamp}. #{defendant} accused #{plaintiff} of #{defendant_response} #{location2} before the incident."
+    formatted_time = timestamp.strftime("%H:%M")
+     description = "#{defendant} is accused of #{verb[0]} #{plaintiff} #{location} at approximately #{formatted_time}. #{defendant} accused #{plaintiff} of #{defendant_response} #{location2} before the incident."
 
      description
   end

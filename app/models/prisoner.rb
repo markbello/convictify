@@ -15,7 +15,6 @@ class Prisoner < ApplicationRecord
   end
 
   def convictify(first_name)
-
     generator = SeedGenerator.new
     #nickname
     self.nickname = generator.create_moniker(first_name)
