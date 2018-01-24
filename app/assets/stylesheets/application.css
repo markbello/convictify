@@ -99,6 +99,11 @@ select:focus{
 BLOCKS
 *****************/
 
+.convict-main-container{
+  height: 100vh;
+  justify-content: center;
+}
+
 .convict-new-edit-container{
   align-items: center;
   justify-content: center;
@@ -154,8 +159,12 @@ MEDIA QUERIES
     display: none;
   }
 
-  .convict-index-show-container{
+  .convict-new-edit-container{
+    margin-left: 90px;
+    margin-right: 90px;
+  }
 
+  .convict-index-show-container{
     margin-left: 90px;
     margin-right: 90px;
   }
@@ -167,8 +176,11 @@ MEDIA QUERIES
     display:none;
   }
 
-  .convict-index-show-container{
+  .convict-new-edit-container{
+    margin-left: 250px;
+  }
 
+  .convict-index-show-container{
     margin-left: 400px;
     max-width: 50em;
   }
