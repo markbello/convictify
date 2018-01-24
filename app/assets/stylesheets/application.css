@@ -82,6 +82,8 @@ BLOCKS
   align-items: center;
   justify-content: center;
   height: 100vh;
+  max-width:80vw;
+  min-width:40vw;
 }
 
 .convict-index-show-container{
@@ -117,4 +119,25 @@ BLOCKS
 
 .align-center{
   align-items: center;
+}
+
+/*****************
+MEDIA QUERIES
+*****************/
+
+@media screen and (max-width: 1024px){
+  #side-menu{
+    display: none;
+  }
+
+  .convict-index-show-container{
+    margin-left: 90px;
+  }
+
+}
+
+@media screen and (min-width: 1025px){
+  #top-menu{
+    display:none;
+  }
 }
