@@ -1,19 +1,27 @@
-<%= form_for @incident_report do |f|%>
-  <%= f.label :guard_id %>
-  <%= f.text_field :guard_id %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.label :incident_type_id %>
-  <%= f.text_field :incident_type_id %>
-  <%= f.label :incident_participants %>
-  <ul>
-    <%= f.fields_for :incident_participants do |incident_participant| %>
-    <li>
-      Plaintiff: <%= incident_participant.text_field :plaintiff_id %>
-      Defendant: <%= incident_participant.text_field :defendant_id %>
-    </li>
-    <% end %>
-  </ul>
+<div class="convict-new-edit-container flex-column">
 
-  <%= f.submit %>
-<% end %>
+  <div class="ui raised padded segment flex-column align-center">
+
+  <h1>Report an Incident</h1>
+
+    <%= form_for @incident_report, html: {class: "ui form convict-form"} do |f|%>
+      <div class="flex-column align-center">
+        <div class="flex-row convict-form-fields">
+          <div>
+            <%= f.label :content %>
+            <%= f.text_area :content %>
+            <%= f.label :incident_type_id %>
+            <%= f.text_field :incident_type_id %>
+            <%= f.fields_for :incident_participants do |incident_participant| %>
+            Plaintiff: <%= incident_participant.text_field :plaintiff_id %>
+            Defendant: <%= incident_participant.text_field :defendant_id %>
+            <% end %>
+          </div>
+        </div>
+          <div class="convict-top-margin">
+            <%= f.submit "Submit Report", class: 'ui big button padded' %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
