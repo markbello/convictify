@@ -3,22 +3,18 @@
 
 <h2>Incident Type</h2>
 <ul>
-  <% @incident_types.each do |incident_type| %>
-  <li><%= incident_type.name %> | <%= incident_type.severity_rating %></li>
-  <% end %>
+  <li><%= @incident_report.incident_type.name %></li>
 </ul>
 
 <h2>Guards</h2>
 <ul>
-  <% @guards.each do |guard| %>
-  <li><%= link_to guard.name, guard %></li>
-  <% end %>
+  <li><%= link_to @incident_report.guard.full_name, @incident_report.guard %></li>
 </ul>
 
 
 <h2>Prisoners</h2>
 <ul>
-  <% @prisoners.each do |prisoner| %>
+  <% @incident_report.prisoners.each do |prisoner| %>
   <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
   <% end %>
 </ul>

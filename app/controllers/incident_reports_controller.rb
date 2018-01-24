@@ -24,15 +24,15 @@ class IncidentReportsController < ApplicationController
     @defendant = params[:incident_report][:incident_participants][:defendant_id]
     @incident_participant_plaintiff = IncidentParticipant.new(prisoner_id: @plaintiff, prisoner_type: 1)
     @incident_participant_defendant = IncidentParticipant.new(prisoner_id: @defendant, prisoner_type: 2)
-    byebug
+    # byebug
     @incident_report = IncidentReport.new(incident_report_params)
     @incident_report[:guard_id] = 1
-    @incident_participants[:incident_report_id] = @incident_report.id
-    @incident_participants.save
+    @incident_report.save
+    @incident_participant_plaintiff[:incident_report_id] = @incident_report.id
+    @incident_participant_defendant[:incident_report_id] = @incident_report.id
+    @incident_participant_plaintiff.save
+    @incident_participant_defendant.save
     if @incident_report.valid?
-      byebug
-      #PrisonerIncident.find_or_create_by(incident_report_id: @incident_report.id, prisoner_id: @plaintiff)
-      #PrisonerIncident.find_or_create_by(incident_report_id: @incident_report.id, prisoner_id: @defendant)
       redirect_to @incident_report
     else
       flash[:error] = @incident_report.errors.full_messages
@@ -65,29 +65,9 @@ class IncidentReportsController < ApplicationController
 
   def incident_report_params
     params.require(:incident_report).permit(
-      :guard_id,
       :content,
-      :incident_type_id,
-      :incident_participants => [:defendant_id, :plaintiff_id]
-      #:groundtruth => [:type, :coordinates => []
+      :incident_type_id
     )
-
-
-    # <ActionController::Parameters
-    # {"utf8"=>"✓", "authenticity_token"=>"PjVyO2XKrDJQP9r+30Z5saF5PDxOhPNEph/HemOeNiMB0El7KF10wD7HW6LkptuqVx93Cjg8JAF18l3B36M7lQ==",
-    #
-    # "incident_report"=>{
-    #   "guard_id"=>"1",
-    #   "content"=>"Content test",
-    #   "incident_type_id"=>"1",
-    #   "incident_participants"=>{
-    #     "plaintiff_id"=>"1",
-    #     "defendant_id"=>"2"}},
-    #
-    # "commit"=>"Create Incident report", "controller"=>"incident_reports", "action"=>"create"} permitted: false>
-
-    # Use the below if integrating an array of foreign keys
-    # params.require(:incident_report).permit(#:name, foreign_ids: [])
   end
 
   def set_incident_report
