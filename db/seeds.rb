@@ -16,8 +16,10 @@ def seed_x_cells_per_block(x)
   CellBlock.all.each do |block|
   counter = 1
     x.times do
-      cell_name = block.name + counter.to_s
+      cell_name = "#{block.name}#{counter.to_s}"
+      puts "Creating #{cell_name}"
       Cell.create(name: cell_name, cell_block_id: block.id)
+      counter += 1
     end
   end
 end
