@@ -65,6 +65,10 @@ select:focus{
   color: white;
 }
 
+.ui.form select{
+  height: 40px;
+}
+
 #guard_cell_block_id {
   height: 3em;
 }

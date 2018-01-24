@@ -11,10 +11,10 @@
             <%= f.label :content %>
             <%= f.text_area :content %>
             <%= f.label :incident_type_id %>
-            <%= f.text_field :incident_type_id %>
+            <%= f.collection_select :incident_type_id, IncidentType.all, :id, :name %>
             <%= f.fields_for :incident_participants do |incident_participant| %>
-            Plaintiff: <%= incident_participant.text_field :plaintiff_id %>
-            Defendant: <%= incident_participant.text_field :defendant_id %>
+            Plaintiff: <%= incident_participant.collection_select :plaintiff_id, Prisoner.all, :id, :name %>
+            Defendant: <%= incident_participant.collection_select :defendant_id, Prisoner.all, :id, :name %>
             <% end %>
           </div>
         </div>
