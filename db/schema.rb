@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123194642) do
+ActiveRecord::Schema.define(version: 20180124162812) do
 
   create_table "cell_blocks", force: :cascade do |t|
     t.string "name"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20180123194642) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname"
+    t.datetime "intake_date"
     t.index ["cell_id"], name: "index_prisoners_on_cell_id"
   end
 
