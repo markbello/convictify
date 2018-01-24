@@ -1,6 +1,6 @@
 <div class="convict-container flex-column">
 
-<h1><%= @prisoner.name %></h1>
+<h1><%= @prisoner.full_name %></h1>
 <em><%= @prisoner.nickname %></em>
 <br/>
 <p><%= @prisoner.conviction %></p>
@@ -11,7 +11,7 @@
 <p>Guard:</p>
 <ul>
   <% @prisoner.guards.each do |guard| %>
-    <li><%= link_to guard.name, guard %></li>
+    <li><%= link_to guard.full_name, guard %></li>
   <% end %>
 </ul>
 

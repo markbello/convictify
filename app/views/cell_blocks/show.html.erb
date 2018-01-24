@@ -1,2 +1,25 @@
-<h1><%= @cell_block.name %></h1>
-<p><%= @cell_block.security_rating %></p>
+<h1>Cell Block <%= @cell_block.name %></h1>
+
+
+<div>
+  <div class="big-letter"></div>
+  <div>
+    <span>Security Rating: </span><%= @cell_block.security_rating %> </br>
+    <span>Guard:</span> <%= link_to @cell_block.guard_list[0].full_name, @cell_block.guard_list[0] %> </br>
+    <span>Number of Cells:</span> <%= @cell_block.cells.count %> </br>
+  </div>
+  <% @cell_block.cells.each do |cell| %>
+    <div class="ui raised padded segment flex-column">
+        <div class="big-letter"><%= link_to cell.name, cell %></div>
+        <div>
+          <span>Prisoners:</span> </br>
+          <ul>
+            <% cell.prisoners.each do |prisoner| %>
+              <li><%= link_to prisoner.full_name, prisoner %></li>
+            <% end %>
+          </ul>
+        </div>
+        <p><%= link_to "View Cell", cell %></p>
+    </div>
+  <% end %>
+</div>

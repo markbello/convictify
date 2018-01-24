@@ -74,15 +74,6 @@ ActiveRecord::Schema.define(version: 20180124203800) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "prisoner_incidents", force: :cascade do |t|
-    t.integer "incident_report_id"
-    t.integer "prisoner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["incident_report_id"], name: "index_prisoner_incidents_on_incident_report_id"
-    t.index ["prisoner_id"], name: "index_prisoner_incidents_on_prisoner_id"
-  end
-
   create_table "prisoners", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
