@@ -15,9 +15,13 @@ h1,h2,h3,h4,h5,h6 {
 h1 {
   font-size: 3em;
   font-weight: 600;
-  color: #d85019;
+  color: rgba(242, 113, 29, 1);
   text-transform: uppercase;
   margin-bottom: 40px;
+}
+
+h2{
+  text-transform: uppercase;
 }
 
 a {
