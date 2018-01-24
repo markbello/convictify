@@ -1,20 +1,25 @@
-<h1>Incident Report</h1>
-<p><%= @incident_report.content %></p>
 
-<h2>Incident Type</h2>
-<ul>
-  <li><%= @incident_report.incident_type.name %></li>
-</ul>
+<div class="flex-column">
+  <div>
+    <h1>Incident Report</h1>
+    <p><%= @incident_report.content %></p>
 
-<h2>Guards</h2>
-<ul>
-  <li><%= link_to @incident_report.guard.full_name, @incident_report.guard %></li>
-</ul>
+    <h2>Incident Type</h2>
+    <ul>
+      <li><%= @incident_report.incident_type.name %></li>
+    </ul>
+
+    <h2>Guards</h2>
+    <ul>
+      <li><%= link_to @incident_report.guard.full_name, @incident_report.guard %></li>
+    </ul>
 
 
-<h2>Prisoners</h2>
-<ul>
-  <% @incident_report.prisoners.each do |prisoner| %>
-  <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
-  <% end %>
-</ul>
+    <h2>Prisoners</h2>
+    <ul>
+      <% @incident_report.prisoners.each do |prisoner| %>
+      <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -108,7 +108,10 @@ BLOCKS
 }
 
 .convict-index-show-container{
-  margin-left: 300px;
+  align-items: baseline;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 120px;
 }
 
 .convict-form {
@@ -152,7 +155,9 @@ MEDIA QUERIES
   }
 
   .convict-index-show-container{
+
     margin-left: 90px;
+    margin-right: 90px;
   }
 
 }
@@ -160,5 +165,11 @@ MEDIA QUERIES
 @media screen and (min-width: 1025px){
   #top-menu{
     display:none;
+  }
+
+  .convict-index-show-container{
+
+    margin-left: 400px;
+    max-width: 50em;
   }
 }
