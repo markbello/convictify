@@ -1,6 +1,15 @@
 <h1>Cell Blocks</h1>
-<ul>
-  <% @cell_blocks.each do |cellblock| %>
-  <li><%= link_to cellblock.name, cellblock %> | <%= cellblock.security_rating %></li>
-  <% end %>
-</ul>
+
+<% @cell_blocks.each do |cellblock| %>
+  <a href="#">
+    <div class="ui raised padded segment flex-column">
+        <div class="big-letter"><%= link_to cellblock.name, cellblock %></div>
+        <div>
+          <span>Security Rating:</span> <%= cellblock.security_rating %> </br>
+          <span>Number of Cells:</span> <%= cellblock.cells.count %> </br>
+          <span>Guard:</span> <%= cellblock.guards.each { |guard| guard.name } %> </br>
+        </div>
+        <p><%= link_to "View Cell Block", cellblock %></p>
+    </div>
+  </a>
+<% end %>
