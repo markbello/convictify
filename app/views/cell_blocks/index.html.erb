@@ -7,7 +7,8 @@
         <div>
           <span>Security Rating:</span> <%= cellblock.security_rating %> </br>
           <span>Number of Cells:</span> <%= cellblock.cells.count %> </br>
-          <span>Guard:</span> <%= cellblock.guards.each { |guard| guard.name } %> </br>
+          
+          <span>Guard:</span> <%= cellblock.guard_list[0].full_name %> </br>
         </div>
         <p><%= link_to "View Cell Block", cellblock %></p>
     </div>
