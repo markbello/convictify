@@ -2,30 +2,30 @@
 
   <div class="ui raised padded segment flex-column align-center">
 
-  <h1>Create New Prisoner</h1>
+  <h1>Convictify New Prisoner</h1>
 
     <%= form_for @prisoner, html: {class: "ui form convict-form"} do |f| %>
       <div class="flex-column align-center">
         <div class="flex-row convict-form-fields">
           <div>
             <%= f.label :first_name %>
-            <%= f.text_field :first_name %>
+            <%= f.text_field :first_name, placeholder: "First Name"  %>
             <%= f.label :last_name %>
-            <%= f.text_field :last_name %>
+            <%= f.text_field :last_name, placeholder: "Last Name"  %>
             <%= f.label :nickname %>
-            <%= f.text_field :nickname %>
+            <%= f.text_field :nickname, placeholder: "Nickname"  %>
           </div>
           <div>
             <%= f.label :conviction %>
-            <%= f.text_field :conviction %>
+            <%= f.text_field :conviction, placeholder: "Conviction"  %>
             <%= f.label :release_date %>
-            <%= f.text_field :release_date %>
+            <%= f.text_field :release_date, placeholder: "Release Date"  %>
             <%= f.label :cell_id %>
-            <%= f.text_field :cell_id %>
+            <%= f.text_field :cell_id, placeholder: "Cell ID"  %>
           </div>
         </div>
         <div class="convict-top-margin">
-          <%= f.submit class: 'ui big button padded' %>
+          <%= f.submit "Convictify", class: 'ui big button padded' %>
         </div>
       </div>
     <% end %>
