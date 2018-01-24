@@ -1,26 +1,18 @@
-<div class="flex-column">
-<h1>Prisoners</h1>
+<div class="convict-index-show-container flex-column">
+  <h1>Prisoners</h1>
 
-<div class="ui list">
-  <% @prisoners.each do |prisoner| %>
-      <!-- <li><%= link_to prisoner.name, prisoner %> | <%= prisoner.nickname %></li> -->
-        <div class="item">
-          <img class="ui avatar image circular" src="http://i.pravatar.cc/50">
-          <div class="content">
-            <a class="header"><%= link_to prisoner.full_name, prisoner %></a>
-            <div class="description"><%= prisoner.nickname %></div>
+  <div class="ui list">
+    <% @prisoners.each do |prisoner| %>
+
+          <div class="item">
+            <img class="ui avatar image circular" src="http://i.pravatar.cc/50">
+            <div class="content">
+              <a class="header"><%= link_to prisoner.full_name, prisoner %></a>
+              <div class="description"><%= prisoner.nickname %></div>
+            </div>
           </div>
-        </div>
-  <% end %>
+    <% end %>
+  </div>
+
+
 </div>
-
-
-</div> <!-- end .flex-column -->
-
-
-<!--  -->
-<!-- <ul>
-  <% @prisoners.each do |prisoner| %>
-      <li><%= link_to prisoner.name, prisoner %> | <%= prisoner.nickname %></li>
-  <% end %>
-</ul> -->

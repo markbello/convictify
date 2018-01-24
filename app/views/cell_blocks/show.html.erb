@@ -1,25 +1,30 @@
-<h1>Cell Block <%= @cell_block.name %></h1>
-
-
-<div>
-  <div class="big-letter"></div>
+<div class="convict-index-show-container flex-column">
   <div>
-    <span>Security Rating: </span><%= @cell_block.security_rating %> </br>
-    <span>Guard:</span> <%= link_to @cell_block.guard_list[0].full_name, @cell_block.guard_list[0] %> </br>
-    <span>Number of Cells:</span> <%= @cell_block.cells.count %> </br>
-  </div>
-  <% @cell_block.cells.each do |cell| %>
-    <div class="ui raised padded segment flex-column">
-        <div class="big-letter"><%= link_to cell.name, cell %></div>
-        <div>
-          <span>Prisoners:</span> </br>
-          <ul>
-            <% cell.prisoners.each do |prisoner| %>
-              <li><%= link_to prisoner.full_name, prisoner %></li>
-            <% end %>
-          </ul>
+
+    <h1>Cell Block <%= @cell_block.name %></h1>
+
+
+    <div>
+      <div>
+        <span><strong>Security Rating:</strong> </span><%= @cell_block.security_rating %> </br>
+        <span><strong>Guard:</strong></span> <%= link_to @cell_block.guard_list[0].full_name, @cell_block.guard_list[0] %> </br>
+        <span><strong>Number of Prisoners:</strong></span> <%= @cell_block.cell_block_prisoner_count %> </br>
+      </div>
+      <% @cell_block.cells.each do |cell| %>
+        <div class="ui raised padded segment flex-column cell-block-index-segment">
+            <div class="big-letter"><%= link_to cell.name, cell %></div>
+            <div>
+              <span><strong>Prisoners:</strong></span> </br>
+              <ul>
+                <% cell.prisoners.each do |prisoner| %>
+                  <li><%= link_to prisoner.full_name, prisoner %></li>
+                <% end %>
+              </ul>
+            </div>
+            <p><%= link_to "View Inmates", cell %></p>
         </div>
-        <p><%= link_to "View Cell", cell %></p>
+      <% end %>
     </div>
-  <% end %>
+
+  </div>
 </div>

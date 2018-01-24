@@ -1,5 +1,5 @@
 
-<div class="flex-column">
+<div class="convict-index-show-container flex-column" >
   <div>
     <h1>Incident Report</h1>
     <p><%= @incident_report.content %></p>
@@ -18,7 +18,7 @@
     <h2>Prisoners</h2>
     <ul>
       <% @incident_report.prisoners.each do |prisoner| %>
-      <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
+      <li><%= link_to "#{prisoner.full_name} | #{prisoner.nickname}", prisoner %></li>
       <% end %>
     </ul>
   </div>

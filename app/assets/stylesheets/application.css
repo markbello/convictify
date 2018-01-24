@@ -38,7 +38,7 @@ a:visited {
   color: #d85019;
 }
 
-span {
+strong {
   font-weight: 600;
 }
 
@@ -115,8 +115,9 @@ BLOCKS
 .convict-index-show-container{
   align-items: baseline;
   justify-content: center;
-  height: 100vh;
-  margin-top: 120px;
+  /* min-height: 100vh; */
+  padding-bottom: 60px
+
 }
 
 .convict-form {
@@ -150,6 +151,11 @@ BLOCKS
   align-items: center;
 }
 
+.cell-block-index-segment{
+  min-width: 50vw;
+  max-width: 80vw;
+}
+
 /*****************
 MEDIA QUERIES
 *****************/
@@ -165,8 +171,8 @@ MEDIA QUERIES
   }
 
   .convict-index-show-container{
-    margin-left: 90px;
-    margin-right: 90px;
+    align-items: center;
+    margin: 120px 90px;
   }
 
 }
@@ -181,6 +187,7 @@ MEDIA QUERIES
   }
 
   .convict-index-show-container{
+    margin-top: 60px;
     margin-left: 400px;
     max-width: 50em;
   }

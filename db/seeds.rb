@@ -65,7 +65,7 @@ Guard.create(first_name: "Frank", last_name: "Wright", cell_block_id: 5, usernam
 puts "Created Guards"
 
 #CREATE INCIDENT REPORTS
-IncidentReport.create(content: "Inmates apprehended while dividing by zero in Cell Block A. Inmate Bello appeared to take the lead, claiming he was \"only de-bugging.\"", guard_id: 1, incident_type_id: 1)
+# IncidentReport.create(content: "Inmates apprehended while dividing by zero in Cell Block A. Inmate Bello appeared to take the lead, claiming he was \"only de-bugging.\"", guard_id: 1, incident_type_id: 1)
 
 40.times do
 

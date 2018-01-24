@@ -1,1 +1,27 @@
-<h1><%= @cell.name %></h1>
+<div class="convict-index-show-container flex-column">
+  <div>
+
+    <h1><%= @cell.name %></h1>
+
+    <div>
+      <div>
+        <span><strong>Security Rating:</strong> </span><%= @cell.cell_block.security_rating %> </br>
+        <span><strong>Number of Prisoners:</strong></span> <%= @cell.prisoners.count %> </br>
+      </div>
+      <% @cell.prisoners.each do |prisoner| %>
+        <div class="ui raised padded segment flex-column cell-block-index-segment">
+            <h3><%= link_to prisoner.full_name, prisoner %></h3>
+            <div>
+              <div><strong>Nickname:</strong> <%= prisoner.nickname %></div>
+              <div><strong>Conviction:</strong> <%= prisoner.conviction %></div>
+              <div><strong>Intake Date:</strong> <%= prisoner.formatted_intake_date %></div>
+              <div><strong>Release Date:</strong> <%= prisoner.formatted_release_date %></div>
+            </div>
+            <br/>
+            <%= link_to "View Prisoner", prisoner %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

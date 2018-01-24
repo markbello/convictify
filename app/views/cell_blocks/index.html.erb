@@ -1,14 +1,20 @@
-<h1>Cell Blocks</h1>
+<div class="convict-index-show-container flex-column">
+  <div>
+    <h1>Cell Blocks</h1>
 
-<% @cell_blocks.each do |cellblock| %>
-  <div class="ui raised padded segment flex-column">
-      <div class="big-letter"><%= link_to cellblock.name, cellblock %></div>
-      <div>
-        <span>Security Rating:</span> <%= cellblock.security_rating %> </br>
-        <span>Number of Cells:</span> <%= cellblock.cells.count %> </br>
+    <% @cell_blocks.each do |cellblock| %>
+      <div class="ui raised padded segment cell-block-index-segment" >
+          <div class="big-letter"><%= link_to cellblock.name, cellblock %></div>
+          <div>
+            <span><strong>Security Rating:</strong></span> <%= cellblock.security_rating %> </br>
+            <span><strong>Number of Prisoners:</strong></span> <%= cellblock.cell_block_prisoner_count %> </br>
 
-        <span>Guard:</span> <%= link_to cellblock.guard_list[0].full_name, cellblock.guard_list[0] %> </br>
+            <span><strong>Guard:</strong></span> <%= link_to cellblock.guard_list[0].full_name, cellblock.guard_list[0] %> </br>
+          </div>
+          <p><%= link_to "View Cells", cellblock %></p>
       </div>
-      <p><%= link_to "View Cell Block", cellblock %></p>
+    <% end %>
   </div>
-<% end %>
+
+
+</div>

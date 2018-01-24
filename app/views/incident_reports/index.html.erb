@@ -1,7 +1,16 @@
-<h1>Incident Reports</h1>
+<div class="convict-index-show-container flex-column">
+  <div>
+    <h1>Incident Reports</h1>
 
-<ul>
-  <% @incident_reports.each do |incident_report| %>
-  <li><%= link_to incident_report.content, incident_report %></li>
-  <% end %>
-</ul>
+    <% @incident_reports.each do |incident_report| %>
+      <div class="ui raised padded segment flex-column">
+          <div><h3><%= link_to incident_report.prisoners.first.full_name, incident_report %> - <%= incident_report.incident_type.name %></h3></div>
+          <div>
+            <div><strong>Content:</strong> <%= incident_report.content  %></div><br/>
+            <div><strong>Guard:</strong> <%= link_to incident_report.guard.full_name, incident_report.guard %></div>
+          </div>
+          <p><%= link_to "View Report", incident_report %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

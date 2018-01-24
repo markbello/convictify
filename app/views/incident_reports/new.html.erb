@@ -13,8 +13,8 @@
             <%= f.label :incident_type_id %>
             <%= f.collection_select :incident_type_id, IncidentType.all, :id, :name %>
             <%= f.fields_for :incident_participants do |incident_participant| %>
-            Plaintiff: <%= incident_participant.collection_select :plaintiff_id, Prisoner.all, :id, :name %>
-            Defendant: <%= incident_participant.collection_select :defendant_id, Prisoner.all, :id, :name %>
+            Plaintiff: <%= incident_participant.collection_select :plaintiff_id, Prisoner.all, :id, :full_name %>
+            Defendant: <%= incident_participant.collection_select :defendant_id, Prisoner.all, :id, :full_name %>
             <% end %>
           </div>
         </div>

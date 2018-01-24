@@ -15,6 +15,10 @@ class Prisoner < ApplicationRecord
     self.release_date.strftime "%B %d, %Y"
   end
 
+  def formatted_intake_date
+    self.intake_date.strftime "%B %d, %Y"
+  end
+
   def convictify(first_name)
     generator = SeedGenerator.new
     #nickname
