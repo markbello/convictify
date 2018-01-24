@@ -79,6 +79,7 @@ select:focus{
 
 .ui.form select{
   height: 40px;
+  font-size: 1em;
 }
 
 #guard_cell_block_id {
