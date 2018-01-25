@@ -1,5 +1,12 @@
 <div class="convict-new-edit-container flex-column">
 
+  <!-- Display Error Messages -->
+  <% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+      <div class="ui red message"><%= err %></div>
+    <%end%>
+  <%end%>
+
   <div class="ui raised padded segment flex-column align-center">
 
   <h2>Report an Incident</h2>

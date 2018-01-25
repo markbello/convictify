@@ -32,6 +32,7 @@ class IncidentReportsController < ApplicationController
     @incident_participant_defendant[:incident_report_id] = @incident_report.id
     @incident_participant_plaintiff.save
     @incident_participant_defendant.save
+    
     if @incident_report.valid?
       redirect_to @incident_report
     else
