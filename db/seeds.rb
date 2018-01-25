@@ -114,13 +114,4 @@ puts "Created Guards"
   end
 end
 
-
-
 puts "Created Incident Reports with Participants"
-
-#CREATE INCIDENT PARTICIPANTS
-
-# IncidentParticipant.create(incident_report_id: 1, defendant_id: 2, plaintiff_id: 1)
-# IncidentParticipant.create(incident_report_id: 1, defendant_id: 3, plaintiff_id: 1)
-
-puts "Created Incident Participants"

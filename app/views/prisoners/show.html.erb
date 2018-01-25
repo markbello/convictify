@@ -18,6 +18,11 @@
     <p><strong>Conviction:</strong> <%= @prisoner.conviction %></p>
     <p><strong>Intake Date: </strong><%= @prisoner.formatted_intake_date %></p>
     <p><strong>Release Date: </strong><%= @prisoner.formatted_release_date %></p>
+    <p><strong>Cellmates: </strong></p>
+    <% @prisoner.cellmates.each do |prisoner| %>
+      <div><%= link_to prisoner.full_name, prisoner %></div>
+    <% end %>
+    <p><strong>Incident Reports: </strong></p>
   </div>
 
 

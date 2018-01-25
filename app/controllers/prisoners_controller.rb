@@ -5,7 +5,8 @@ class PrisonersController < ApplicationController
   before_action :set_prisoner, only: [:show, :edit, :update, :destroy]
 
   def index
-    set_prisoners
+    #.inmates class method eliminates the firt prisoner which is Prison Official
+    @inmates = Prisoner.inmates
   end
 
   def show
@@ -21,7 +22,7 @@ class PrisonersController < ApplicationController
     @prisoner.convictify(prisoner_params[:first_name])
 
     if @prisoner.valid?
-      byebug
+      #byebug
       redirect_to @prisoner
     else
       flash[:error] = @prisoner.errors.full_messages
@@ -65,10 +66,6 @@ class PrisonersController < ApplicationController
 
   def set_prisoner
     @prisoner = Prisoner.find(params[:id])
-  end
-
-  def set_prisoners
-    @prisoners = Prisoner.all
   end
 
 end
