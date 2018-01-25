@@ -1,18 +1,24 @@
 <div class="convict-index-show-container flex-column">
 
-  <h1><%= @prisoner.full_name %></h1>
-  <em><%= @prisoner.nickname %></em>
+  <div class="prisoner-title">
+    <div><h1><%= @prisoner.full_name %></h1></div>
+    <div><h3><%= @prisoner.nickname %></h3></div>
+  </div>
   <br/>
-  <p><%= @prisoner.conviction %></p>
-  <p><%= @prisoner.formatted_release_date %></p>
-  <br/>
-  <p>Cell ID: <%= @prisoner.cell_id %></p>
-  <br/>
-  <p>Guard:</p>
-  <ul>
-    <% @prisoner.guards.each do |guard| %>
-      <li><%= link_to guard.full_name, guard %></li>
-    <% end %>
-  </ul>
+
+  <div>
+    <br/>
+    <p><strong>Cell:</strong> <%= link_to @prisoner.cell.name, @prisoner.cell %></p>
+    <p><strong>Guard:</strong>
+      <% @prisoner.guards.each do |guard| %>
+        <%= link_to guard.full_name, guard %>
+      <% end %>
+    </p>
+    <br/>
+    <p><strong>Conviction:</strong> <%= @prisoner.conviction %></p>
+    <p><strong>Intake Date: </strong><%= @prisoner.formatted_intake_date %></p>
+    <p><strong>Release Date: </strong><%= @prisoner.formatted_release_date %></p>
+  </div>
+
 
 </div>
