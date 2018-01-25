@@ -5,7 +5,9 @@
   <div class="header">Prisoners</div>
   <div class="menu">
     <a class="item" href="<%= prisoners_path %>">View All</a>
-    <a class="item" href="<%= new_prisoner_path %>">New Prisoner</a>
+    <% if logged_in? %>
+      <a class="item" href="<%= new_prisoner_path %>">New Prisoner</a>
+    <% end %>
   </div>
 </div>
 <div class="item">
@@ -18,13 +20,20 @@
   <div class="header">Incident Reports</div>
   <div class="menu">
     <a class="item" href="<%= incident_reports_path %>">View All</a>
-    <a class="item" href="<%= new_incident_report_path %>">Create New</a>
+    <% if logged_in? %>
+      <a class="item" href="<%= new_incident_report_path %>">Create New</a>
+    <% end %>
   </div>
 </div>
 <div class="item">
   <div class="header">Guards</div>
   <div class="menu">
-    <a class="item">My Profile</a>
-    <a class="item">Logout</a>
+    <% if logged_in? %>
+      <a class="item" href="<%= guard_path(session[:user_id])  %>">My Profile</a>
+      <%= link_to "Logout", sessions_path, method: :delete, class: "item" %>
+    <% else %>
+    <a class="item" href="<%= login_path %>">Login</a>
+    <a class="item" href="<%= signup_path %>">Signup</a>
+    <% end %>
   </div>
 </div>

@@ -1,6 +1,7 @@
 class CellBlocksController < ApplicationController
 
   before_action :set_cell_block, only: [:show]
+  skip_before_action :authorized, only: [:show, :index]
 
   def index
     @cell_blocks = CellBlock.all

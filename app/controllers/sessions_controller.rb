@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @guard = Guard.find_by(username: params[:username])
     if @guard && @guard.authenticate(params[:password])
-     session[:guard_id] = @guard.id
+     session[:user_id] = @guard.id
      redirect_to @guard
     else
      redirect_to login_path
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:guard_id)
+    session.delete(:user_id)
     redirect_to login_path
   end
 

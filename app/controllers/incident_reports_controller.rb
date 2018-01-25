@@ -3,6 +3,7 @@ class IncidentReportsController < ApplicationController
 #Remember to add resources :incident_reports, only [:index, etc.] to config/routes.rb
 
   before_action :set_incident_report, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:index, :show]
 
   def index
     set_incident_reports
@@ -32,7 +33,7 @@ class IncidentReportsController < ApplicationController
     @incident_participant_defendant[:incident_report_id] = @incident_report.id
     @incident_participant_plaintiff.save
     @incident_participant_defendant.save
-    
+
     if @incident_report.valid?
       redirect_to @incident_report
     else

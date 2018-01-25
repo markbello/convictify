@@ -3,6 +3,7 @@ class PrisonersController < ApplicationController
 #Remember to add resources :prisoners, only [:index, etc.] to config/routes.rb
 
   before_action :set_prisoner, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:index, :show]
 
   def index
     #.inmates class method eliminates the firt prisoner which is Prison Official
@@ -22,7 +23,8 @@ class PrisonersController < ApplicationController
     @prisoner.convictify(prisoner_params[:first_name])
 
     if @prisoner.valid?
-      #byebug
+      # byebug
+      @prisoner.guards << Guard.first
       redirect_to @prisoner
     else
       flash[:error] = @prisoner.errors.full_messages

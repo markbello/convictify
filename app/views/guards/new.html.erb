@@ -1,8 +1,15 @@
-<div class="convict-container flex-column">
+<div class="convict-new-edit-container flex-column">
+
+  <!-- Display Error Messages -->
+  <% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+      <div class="ui red message"><%= err %></div>
+    <%end%>
+  <%end%>
 
   <div class="ui raised padded segment flex-column align-center">
 
-  <h1>Create New Guard</h1>
+  <h1>Signup</h1>
 
     <%= form_for @guard, html: {class: "ui form convict-form"} do |f| %>
       <div class="flex-column align-center">
@@ -25,7 +32,7 @@
           </div>
         </div>
         <div class="convict-top-margin">
-          <%= f.submit class: 'ui big button padded' %>
+          <%= f.submit "Signup", class: 'ui big button padded' %>
         </div>
       </div>
     <% end %>

@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
 
   def current_guard
-    if session[:guard_id]
-      @guard = Guard.find_by(id: session[:guard_id])
+    if session[:user_id]
+      @guard = Guard.find_by(id: session[:user_id])
     else
     end
   end

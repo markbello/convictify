@@ -1,7 +1,7 @@
 class GuardsController < ApplicationController
 
   before_action :set_guard, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorized, only: [:new, :create, :show]
+  skip_before_action :authorized, only: [:new, :create, :index, :show]
 
   def index
     @guards = Guard.all
@@ -23,6 +23,7 @@ class GuardsController < ApplicationController
     @guard = Guard.create(guard_params)
 
     if @guard.valid?
+      session[:user_id] = @guard.id
       redirect_to @guard
     else
       flash[:error] = @guard.errors.full_messages
