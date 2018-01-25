@@ -27,7 +27,7 @@ class IncidentReportsController < ApplicationController
     @incident_participant_defendant = IncidentParticipant.new(prisoner_id: @defendant, prisoner_type: 2)
     # byebug
     @incident_report = IncidentReport.new(incident_report_params)
-    @incident_report[:guard_id] = 1
+    @incident_report[:guard_id] = session[:user_id]
     @incident_report.save
     @incident_participant_plaintiff[:incident_report_id] = @incident_report.id
     @incident_participant_defendant[:incident_report_id] = @incident_report.id
