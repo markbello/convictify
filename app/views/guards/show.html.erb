@@ -9,14 +9,14 @@
       <p><strong>Incident Reports:</strong></p>
         <% @guard.incident_reports.each do |incident_report| %>
           <% @incident_report = incident_report%>
-          <%= render partial: "layouts/incident_report_loop" %>
+          <%= render partial: "/partials/incident_report_loop" %>
         <% end %>
       </br>
 
       <h3>Prisoners:</h3>
         <% @guard.prisoners.each do |prisoner| %>
           <% @prisoner = prisoner %>
-          <%= render partial: "layouts/prisoner_loop" %>
+          <%= render partial: "/partials/prisoner_loop" %>
         <% end %>
     </div>
 
