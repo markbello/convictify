@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get "signup", to: "guards#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
+  get "leaderboard", to: "sessions#new", as: "leaderboard"
   post "sessions", to: "sessions#create", as: "sessions"
   delete "sessions", to: "sessions#destroy"
 

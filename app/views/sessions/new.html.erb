@@ -1,8 +1,27 @@
-<div id="login-page">
-  <div class="convict-index-show-container flex-column">
+<div class="convict-index-show-container flex-column">
 
-    <% if !logged_in? %>
-      <%= render partial: "/partials/leaderboard" %>
-    <% end %>
+  <div>
+    <h1>Leaderboard</h1>
+
+    <div class="ui raised padded segment flex-column cell-block-index-segment">
+      <h2>Most Recent Incidents</h2>
+        <% @latest_incident_reports.each do |incident_report| %>
+          <div>
+            <strong><%= link_to incident_report.prisoners.first.full_name, incident_report %> ( Cell: <%= link_to  incident_report.prisoners.first.cell.name, incident_report.prisoners.first.cell %> ) - <%= incident_report.incident_type.name %></strong>
+          </div>
+
+          <div>
+            <div><strong>Content:</strong> <%= incident_report.short_desc  %></div><br/>
+          </div>
+
+          <p><%= link_to "View Report", incident_report %></p>
+        <% end %>
+
+
+    </div>
+
+
+
   </div>
+
 </div>
