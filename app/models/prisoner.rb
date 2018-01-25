@@ -6,6 +6,9 @@ class Prisoner < ApplicationRecord
   has_many :guard_prisoners
   has_many :guards, through: :guard_prisoners
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
 
   def full_name
     "#{first_name} #{last_name}"
