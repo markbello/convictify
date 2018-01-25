@@ -6,19 +6,17 @@
     <div>
       <p><strong>Cell Block ID:</strong> <%= @guard.cell_block_id %></p>
       </br>
-      <h3>Incident Reports:</h3>
+      <p><strong>Incident Reports:</strong></p>
         <% @guard.incident_reports.each do |incident_report| %>
-          <div class="ui raised padded segment flex-column cell-block-index-segment">
-            <li><%= link_to incident_report.content, incident_report %></li>
-          </div>
+          <% @incident_report = incident_report%>
+          <%= render partial: "layouts/incident_report_loop" %>
         <% end %>
       </br>
 
       <h3>Prisoners:</h3>
         <% @guard.prisoners.each do |prisoner| %>
-          <div class="ui raised padded segment flex-column cell-block-index-segment">
-            <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
-          </div>
+          <% @prisoner = prisoner %>
+          <%= render partial: "layouts/prisoner_loop" %>
         <% end %>
     </div>
 

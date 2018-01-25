@@ -1,0 +1,9 @@
+<div class="ui raised padded segment flex-column cell-block-index-segment">
+    <% #byebug %>
+    <div><h3><%= link_to @incident_report.prisoners.first.full_name, @incident_report %> - <%= @incident_report.incident_type.name %></h3></div>
+    <div>
+      <div><strong>Content:</strong> <%= @incident_report.content  %></div><br/>
+      <div><strong>Guard:</strong> <%= link_to @incident_report.guard.full_name, @incident_report.guard %></div>
+    </div>
+    <p><%= link_to "View Report", @incident_report %></p>
+</div>
