@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
 
   def new
+    @prisoners = Prisoner.all
   end
 
   def create

@@ -1,17 +1,24 @@
-<h1><%= @guard.full_name %></h1>
-<p>Cell Block ID: <%= @guard.cell_block_id %></p>
-</br>
-<p>Incident Reports:</p>
-<ul>
-  <% @guard.incident_reports.each do |incident_report| %>
-    <li><%= link_to incident_report.content, incident_report %></li>
-  <% end %>
-</ul>
-</br>
+<div class="convict-index-show-container flex-column">
+  <div>
 
-<p>Prisoners:</p>
-<ul>
-  <% @guard.prisoners.each do |prisoner| %>
-    <li><%= link_to "#{prisoner.name} | #{prisoner.nickname}", prisoner %></li>
-  <% end %>
-</ul>
+  <h1><%= @guard.full_name %></h1>
+
+    <div>
+      <p><strong>Cell Block ID:</strong> <%= @guard.cell_block_id %></p>
+      </br>
+      <p><strong>Incident Reports:</strong></p>
+        <% @guard.incident_reports.each do |incident_report| %>
+          <% @incident_report = incident_report%>
+          <%= render partial: "/partials/incident_report_loop" %>
+        <% end %>
+      </br>
+
+      <h3>Prisoners:</h3>
+        <% @guard.prisoners.each do |prisoner| %>
+          <% @prisoner = prisoner %>
+          <%= render partial: "/partials/prisoner_loop" %>
+        <% end %>
+    </div>
+
+  </div>
+</div>

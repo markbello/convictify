@@ -21,13 +21,16 @@ class IncidentReportsController < ApplicationController
 
   def create
     #byebug
+    @guard = session[:user_id]
     @plaintiff = params[:incident_report][:incident_participants][:plaintiff_id]
     @defendant = params[:incident_report][:incident_participants][:defendant_id]
     @incident_participant_plaintiff = IncidentParticipant.new(prisoner_id: @plaintiff, prisoner_type: 1)
     @incident_participant_defendant = IncidentParticipant.new(prisoner_id: @defendant, prisoner_type: 2)
+    GuardPrisoner.find_or_create_by(guard_id: @guard, prisoner_id: @plaintiff)
+    GuardPrisoner.find_or_create_by(guard_id: @guard, prisoner_id: @defendant)
     # byebug
     @incident_report = IncidentReport.new(incident_report_params)
-    @incident_report[:guard_id] = 1
+    @incident_report[:guard_id] = @guard
     @incident_report.save
     @incident_participant_plaintiff[:incident_report_id] = @incident_report.id
     @incident_participant_defendant[:incident_report_id] = @incident_report.id

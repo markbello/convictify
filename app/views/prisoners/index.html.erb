@@ -1,17 +1,10 @@
 <div class="convict-index-show-container flex-column">
-  <h1>Prisoners</h1>
 
-  <div class="ui list">
-    <% @inmates.each do |prisoner| %>
-          <div class="item">
-            <img class="ui avatar image circular" src="http://i.pravatar.cc/50">
-            <div class="content">
-              <a class="header"><%= link_to prisoner.full_name, prisoner %></a>
-              <div class="description"><%= prisoner.nickname %></div>
-            </div>
-          </div>
-    <% end %>
-  </div>
+  <% if logged_in? %>
+  <% @guard = Guard.find(session[:user_id]) %>
+  <%= render partial: "/partials/my_prisoners" %>
 
-
+  <% else  %>
+    <%= render partial: "/partials/leaderboard" %>
+  <% end %>
 </div>

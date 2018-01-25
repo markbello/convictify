@@ -25,6 +25,11 @@
     <% end %>
     <br/>
     <p><strong>Incident Reports: </strong></p>
+    <% @prisoner.incident_reports.each do |incident_report| %>
+      <% @incident_report = incident_report%>
+      <%= render partial: "/partials/incident_report_loop" %>
+    <% end %>
+
   </div>
 
 
