@@ -21,20 +21,16 @@
   </head>
 
   <body>
-    <!-- <div class="flex-row"> -->
+
       <div id="side-menu" class="ui left fixed borderless vertical menu" >
         <%= render partial: "/partials/side_menu" %>
       </div>
-      <div id="top-menu" class="ui top fixed borderless menu" >
-        <!-- <div class="item">
-          <a href="<%= incident_reports_path %>"><img src="<%= asset_path 'convictify-logo.svg' %>" max-width="250px" style="margin-top:20px;margin-bottom:20px;"/></a>
-        </div> -->
+      <div id="top-menu">
         <%= render partial: "/partials/top_menu" %>
       </div>
       <div class="convict-main-container">
         <%= yield %>
       </div>
-  <!--     </div> -->
 
 
   </body>

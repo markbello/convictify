@@ -1,6 +1,6 @@
 
 
-<div>
+<div class="login-form-fields">
   <%= form_tag sessions_path, class: "ui form convict-form-fields" do %>
     <div class="item">
       <%= label_tag "Email" %>
@@ -16,6 +16,7 @@
   <% end %>
 
 </div>
+
 <div class="item">
   <div class="header">Not a Member Yet?</div>
   <a class="" href="<%= signup_path %>">Sign Up</a>

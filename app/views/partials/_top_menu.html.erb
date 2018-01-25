@@ -1,18 +1,24 @@
-<div class="item">
-  <img src="<%= asset_path 'convictify-logo-rect.svg' %>" style="width: 200px; margin-top: 20px; margin-bottom:20px;"/>
-  <a href="<%= incident_reports_path %>"></a>
-</div>
+
+
 
 <% if logged_in? %>
-<div class="right menu">
-    <a class="item" href="<%= prisoners_path %>">Prisoners</a>
-    <a class="item" href="<%= cell_blocks_path %>">Cell Blocks</a>
-    <a class="item" href="<%= incident_reports_path %>">Incident Reports</a>
-    <a class="item">Profile</a>
+<div class="ui top fixed borderless menu" >
+  <div class="item">
+    <img src="<%= asset_path 'convictify-logo-rect.svg' %>" style="width: 200px; margin-top: 20px; margin-bottom:20px;"/>
+    <a href="<%= incident_reports_path %>"></a>
+  </div>
+  <a class="item" href="<%= prisoners_path %>">Prisoners</a>
+  <a class="item" href="<%= cell_blocks_path %>">Cell Blocks</a>
+  <a class="item" href="<%= incident_reports_path %>">Incident Reports</a>
+  <a class="item">Profile</a>
 </div>
 
 <% else %>
-<div class="flex-row">
+<div class="item">
+  <img src="<%= asset_path 'convictify-logo-rect.svg' %>" style="width: 200px; margin-top: 20px; margin-bottom:20px; text-align: center;"/>
+  <a href="<%= incident_reports_path %>"></a>
+</div>
+<div class="ui top fixed borderless menu">
   <%= render partial: "/partials/login_form" %>
 </div>
 <% end %>
