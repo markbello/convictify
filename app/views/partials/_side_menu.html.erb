@@ -2,15 +2,13 @@
   <a href="<%= incident_reports_path %>"><img src="<%= asset_path 'convictify-logo.svg' %>" max-width="250px" style="margin-top:20px;margin-bottom:20px;"/></a>
 </div>
   <% if logged_in? %>
-  <div class="menu">
+  <div class="item">
     <div class="item">
       <div class="header">Prisoners</div>
       <div class="menu">
         <a class="item" href="<%= prisoners_path %>">Leaderboard</a>
-        <% if logged_in? %>
           <a class="item" href="<%= new_prisoner_path %>">My Prisoners</a>
           <a class="item" href="<%= new_prisoner_path %>">New Prisoner</a>
-        <% end %>
       </div>
     </div>
     <div class="item">
@@ -30,14 +28,11 @@
     </div>
       <a class="item" href="<%= guard_path(session[:user_id])  %>">My Profile</a>
       <%= link_to "Logout", sessions_path, method: :delete, class: "item" %>
+    </div>
     <% else %>
     <div class="item">
       <div class="header">Log In</div>
       <%= render partial: "/partials/login_form" %>
-
-
+    </div>
   </div>
-
-</div>
-
 <% end %>
