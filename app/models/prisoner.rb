@@ -58,4 +58,8 @@ class Prisoner < ApplicationRecord
     inmates
   end
 
+  def self.latest_prisoners
+    Prisoner.all.last(3)
+  end
+
 end

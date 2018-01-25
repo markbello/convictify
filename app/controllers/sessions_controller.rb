@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   def new
     @cellblocks = CellBlock.all
     @latest_incident_reports = IncidentReport.latest_incident_reports
-    @prisoners = Prisoner.all
+    @latest_prisoners = Prisoner.latest_prisoners
   end
 
   def create

@@ -5,19 +5,35 @@
 
     <div class="ui raised padded segment flex-column cell-block-index-segment">
       <h2>Most Recent Incidents</h2>
-        <% @latest_incident_reports.each do |incident_report| %>
-          <div>
-            <strong><%= link_to incident_report.prisoners.first.full_name, incident_report %> ( Cell: <%= link_to  incident_report.prisoners.first.cell.name, incident_report.prisoners.first.cell %> ) - <%= incident_report.incident_type.name %></strong>
-          </div>
 
-          <div>
-            <div><strong>Content:</strong> <%= incident_report.short_desc  %></div><br/>
-          </div>
+      <% @latest_incident_reports.each do |incident_report| %>
+        <div>
+          <strong><%= link_to incident_report.prisoners.first.full_name, incident_report %> ( Cell: <%= link_to  incident_report.prisoners.first.cell.name, incident_report.prisoners.first.cell %> ) - <%= incident_report.incident_type.name %></strong> <br>
+          <strong>Content:</strong> <%= incident_report.short_desc  %>
+        </div>
 
-          <p><%= link_to "View Report", incident_report %></p>
-        <% end %>
+        <p style="text-align: right; margin: 15px 40px 40px 0"><%= link_to "View Report", incident_report %></p>
+      <% end %>
+    </div>
 
+    <div class="ui raised padded segment flex-column cell-block-index-segment">
+      <h2>Newest Prisoners</h2>
 
+      <% @latest_prisoners.each do |prisoner| %>
+        <div>
+          <p>
+            <strong><%= link_to prisoner.full_name, prisoner %></strong> <em>(<%=  prisoner.nickname %>)</em> <br/>
+          </p>
+          <p>
+            <strong>Conviction: </strong><%= prisoner.conviction %>
+          </p>
+          <p>
+            <strong>Intake Date:</strong> <%= prisoner.formatted_intake_date  %> <br/>
+            <strong>Release Date:</strong> <%= prisoner.formatted_release_date  %>
+          </p>
+          <br/>
+        </div>
+      <% end %>
     </div>
 
 
