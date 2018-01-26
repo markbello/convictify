@@ -132,7 +132,7 @@ class SeedGenerator
         "having God-awful taste in music",
         "mis-quoting Bible verses",
         "thinking impure thoughts",
-        "not understanding what ActiveRecord is"
+        "not understanding how ActiveRecord works"
       ]
     }
   end
@@ -146,7 +146,7 @@ class SeedGenerator
   def create_moniker(name)
     noun = rand_index(:outside_crimes)[0]
     adjective = rand_index(:adjectives)
-    "#{name} the #{adjective} #{noun}"
+    "#{name} the #{adjective} #{noun}".chomp
   end
 
   def assign_crime

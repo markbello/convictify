@@ -150,7 +150,7 @@ class SeedGenerator
   def create_moniker(name)
     noun = rand_index(:outside_crimes)[0]
     adjective = rand_index(:adjectives)
-    "#{name} the #{adjective} #{noun}"
+    "#{name} the #{adjective} #{noun}".chomp
   end
 
   def assign_crime
@@ -178,14 +178,14 @@ class SeedGenerator
     # byebug
     defendant_name = "#{defendant[:first_name]} #{defendant[:last_name]}"
     plaintiff_name = "#{plaintiff[:first_name]} #{plaintiff[:last_name]}"
-   formatted_time = timestamp.strftime("%H:%M")
-   desc = "#{defendant_name} is accused of #{verb[0]} #{plaintiff_name} #{location} at approximately #{formatted_time}. #{defendant[:last_name]} accused #{plaintiff[:last_name]} of #{defendant_response} #{location2} before the incident."
-   incident = IncidentReport.create(content: desc, guard_id: guard.id, incident_type_id: incident_type)
-   IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: plaintiff.id, prisoner_type: 1)
-   IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: defendant.id, prisoner_type: 2)
-   GuardPrisoner.find_or_create_by(guard_id: guard.id, prisoner_id: plaintiff.id)
-   GuardPrisoner.find_or_create_by(guard_id: guard.id, prisoner_id: defendant.id)
-   puts desc
+    formatted_time = timestamp.strftime("%H:%M")
+    desc = "#{defendant_name} is accused of #{verb[0]} #{plaintiff_name} #{location} at approximately #{formatted_time}. #{defendant[:last_name]} accused #{plaintiff[:last_name]} of #{defendant_response} #{location2} before the incident."
+    incident = IncidentReport.create(content: desc, guard_id: guard.id, incident_type_id: incident_type)
+    IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: plaintiff.id, prisoner_type: 1)
+    IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: defendant.id, prisoner_type: 2)
+    GuardPrisoner.find_or_create_by(guard_id: guard.id, prisoner_id: plaintiff.id)
+    GuardPrisoner.find_or_create_by(guard_id: guard.id, prisoner_id: defendant.id)
+    puts desc
   end
 
 end
