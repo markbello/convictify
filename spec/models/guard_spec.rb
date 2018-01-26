@@ -2,7 +2,7 @@ require 'rails_helper'
 require "validates_email_format_of/rspec_matcher"
 
 describe Guard do
-  it { should validate_email_format_of(:email).with_message('Does not appear to be a valid e-mail address') }
+  it { should validate_email_format_of(:email).with_message('does not appear to be a valid e-mail address') }
 end
 
 RSpec.describe Guard, :type => :model do
@@ -32,6 +32,10 @@ RSpec.describe Guard, :type => :model do
    end
  end
 
-
+ describe Guard, "#full_name" do
+   it " is truthy " do
+     expect(subject).to be_truthy
+   end
+ end
 
 end
