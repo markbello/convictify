@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @guard = Guard.find_by(username: params[:username])
+    @guard = Guard.find_by(email: params[:email])
     if @guard && @guard.authenticate(params[:password])
      session[:user_id] = @guard.id
      redirect_to @guard

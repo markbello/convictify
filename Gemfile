@@ -29,7 +29,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# Fakes names
 gem 'faker'
+# Validate e-mail addresses against RFC 2822 and RFC 3696.
+gem 'validates_email_format_of'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

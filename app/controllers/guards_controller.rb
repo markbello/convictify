@@ -64,7 +64,7 @@ class GuardsController < ApplicationController
     params.require(:guard).permit(
       :first_name,
       :last_name,
-      :username,
+      :email,
       :password,
       :password_confirmation
     )

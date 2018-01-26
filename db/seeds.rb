@@ -56,12 +56,11 @@ end
 puts "Convictified Prisoners"
 
 #CREATE GUARDS
-Guard.create(first_name: "Bob", last_name: "Smith", cell_block_id: 1, username: "g1", password_digest: "password")
-Guard.create(first_name: "Joe", last_name: "Clay", cell_block_id: 2, username: "g2", password_digest: "password")
-Guard.create(first_name: "Victor", last_name: "Nabokov", cell_block_id: 3, username: "g3", password_digest: "password")
-Guard.create(first_name: "Jason", last_name: "Newstead", cell_block_id: 4, username: "g4", password_digest: "password")
-Guard.create(first_name: "Frank", last_name: "Wright", cell_block_id: 5, username: "g5", password_digest: "password")
-
+Guard.create(first_name: "Bob", last_name: "Smith", cell_block_id: 1, email: "guard1@gmail.com", password: "$2a$10$FWvJySx2YRNjOdxu6vQLEOh6o4L2kvwosgsikRhtlPFv/xTJ/759W")
+Guard.create(first_name: "Joe", last_name: "Clay", cell_block_id: 2, email: "guard2@gmail.com", password: "$2a$10$FWvJySx2YRNjOdxu6vQLEOh6o4L2kvwosgsikRhtlPFv/xTJ/759W")
+Guard.create(first_name: "Victor", last_name: "Nabokov", cell_block_id: 3, email: "guard3@gmail.com", password: "$2a$10$FWvJySx2YRNjOdxu6vQLEOh6o4L2kvwosgsikRhtlPFv/xTJ/759W")
+Guard.create(first_name: "Jason", last_name: "Newstead", cell_block_id: 4, email: "guard4@gmail.com", password: "$2a$10$FWvJySx2YRNjOdxu6vQLEOh6o4L2kvwosgsikRhtlPFv/xTJ/759W")
+g = Guard.create(first_name: "Frank", last_name: "Wright", cell_block_id: 5, email: "guard5@gmail.com", password: "$2a$10$FWvJySx2YRNjOdxu6vQLEOh6o4L2kvwosgsikRhtlPFv/xTJ/759W")
 puts "Created Guards"
 
 #CREATE INCIDENT REPORTS

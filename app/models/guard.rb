@@ -7,8 +7,9 @@ class Guard < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, presence: true
+  validates :email, presence: true
   validates :password, presence: true
+  validates_email_format_of :email, :message => 'does not appear to be a valid e-mail address'
 
 
   def full_name
