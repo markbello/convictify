@@ -7,6 +7,7 @@ FONTS
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   letter-spacing: .3px;
+  line-height: 1.5em;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -256,6 +257,7 @@ MEDIA QUERIES
   .convict-index-show-container{
     margin-top: 60px;
     margin-left: 400px;
+    margin-right: 80px;
     max-width: 50em;
   }
 }

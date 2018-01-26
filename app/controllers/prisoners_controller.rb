@@ -9,6 +9,8 @@ class PrisonersController < ApplicationController
     #.inmates class method eliminates the firt prisoner which is Prison Official
     @inmates = Prisoner.inmates
     @guard = Guard.find(session[:user_id])
+    @latest_prisoners = Prisoner.latest_prisoners
+    @latest_incident_reports = IncidentReport.latest_incident_reports
   end
 
   def show
