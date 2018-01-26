@@ -14,4 +14,16 @@ class CellBlock < ApplicationRecord
     end
     total
   end
+
+  def most_common_incidents
+    all_incidents = []
+    self.prisoners.each do |prisoner|
+      prisoner_incident_types = prisoner.incident_reports.map do |incident_report|
+        incident_report.incident_type
+      end
+      all_incidents += prisoner_incident_types
+    end
+    freq = all_incidents.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    most_frequent = all_incidents.max_by { |v| freq[v] }
+  end
 end

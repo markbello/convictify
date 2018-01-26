@@ -20,9 +20,14 @@ class GuardsController < ApplicationController
   def create
     guard_params[:first_name].capitalize!
     guard_params[:last_name].capitalize!
-    @guard = Guard.create(guard_params)
+    @guard = Guard.new(guard_params)
+
+    random_block_index = rand(CellBlock.all.count - 1)
+    @guard.cell_block = CellBlock.find(random_block_index)
+
 
     if @guard.valid?
+      @guard.save
       session[:user_id] = @guard.id
       redirect_to @guard
     else
@@ -59,7 +64,6 @@ class GuardsController < ApplicationController
     params.require(:guard).permit(
       :first_name,
       :last_name,
-      :cell_block_id,
       :username,
       :password,
       :password_confirmation

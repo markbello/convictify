@@ -7,10 +7,10 @@
     <img src="<%= asset_path 'convictify-logo-rect.svg' %>" style="width: 200px; margin-top: 20px; margin-bottom:20px;"/>
     <a href="<%= incident_reports_path %>"></a>
   </div>
-  <a class="item" href="<%= prisoners_path %>">Prisoners</a>
-  <a class="item" href="<%= cell_blocks_path %>">Cell Blocks</a>
+  <a class="item" href="<%= leaderboard_path %>">Leaderboard</a>
   <a class="item" href="<%= incident_reports_path %>">Incident Reports</a>
-  <a class="item">Profile</a>
+  <a class="item" href="<%= guard_path(Guard.find(session[:user_id]))%>">My Profile</a>
+  <%= link_to "Logout", sessions_path, method: :delete, class: "item" %>
 </div>
 
 <% else %>

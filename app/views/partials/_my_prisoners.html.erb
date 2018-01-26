@@ -1,14 +1,24 @@
-<h1>My Prisoners</h1>
-
-
-<div class="ui list">
+<div class="ui raised padded segment flex-column cell-block-index-segment">
+  <% if @guard.prisoners.empty? %>
+    <div>
+      <h3><em>You have not Convictified anyone yet!</em></h3>
+      <%= link_to "Do it now", new_prisoner_path, class: "ui big orange button" %>
+    </div>
+  <% end %>
   <% @guard.prisoners.each do |prisoner| %>
-    <div class="item">
-      <img class="ui avatar image circular" src="http://i.pravatar.cc/50">
-      <div class="content">
-        <a class="header"><%= link_to prisoner.full_name, prisoner %></a>
-        <div class="description"><%= prisoner.nickname %></div>
-      </div>
+    <div>
+
+      <p>
+        <strong><%= link_to prisoner.full_name, prisoner %></strong> <em>(<%=  prisoner.nickname %>)</em> <br/>
+      </p>
+      <p>
+        <strong>Conviction: </strong><%= prisoner.conviction %>
+      </p>
+      <p>
+        <strong>Intake Date:</strong> <%= prisoner.formatted_intake_date  %> <br/>
+        <strong>Release Date:</strong> <%= prisoner.formatted_release_date  %>
+      </p>
+      <br/>
     </div>
   <% end %>
 </div>

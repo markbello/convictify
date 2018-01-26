@@ -37,8 +37,8 @@ puts "Created Incident Types"
 
 #CREATE PRISONERS
 Prisoner.create(first_name: "Prison", last_name: "Official", intake_date: "2018-01-24 00:00:00", release_date: "3018-09-10 00:00:00", conviction: "Staff Account", cell_id: 1, nickname: 'The Prison')
-Prisoner.create(first_name: "Mark", last_name: "Bello", intake_date: "2018-01-24 00:00:00", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Mark"))
-Prisoner.create(first_name: "Oleg", last_name: "Chursin", intake_date: "2018-01-24 00:00:00", release_date: "2019-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Oleg"))
+# Prisoner.create(first_name: "Mark", last_name: "Bello", intake_date: "2018-01-24 00:00:00", release_date: "2018-09-10 00:00:00", conviction: "Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Mark"))
+# Prisoner.create(first_name: "Oleg", last_name: "Chursin", intake_date: "2018-01-24 00:00:00", release_date: "2019-09-10 00:00:00", conviction: "Accessory to Division by Zero, First Degree", cell_id: 1, nickname: seed_generator.create_moniker("Oleg"))
 
 cell_counter = 1
 25.times do
@@ -95,23 +95,15 @@ puts "Created Guards"
   prisoners_array << defendant
 
   incident_time = Faker::Time.backward(1)
-  desc = seed_generator.create_description(plaintiff.first_name, defendant.first_name, incident_time)
-  puts desc
-  incident = IncidentReport.create(content: desc, guard_id: 1, incident_type_id: 1)
-  IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: plaintiff.id, prisoner_type: 1)
-  IncidentParticipant.create(incident_report_id: incident.id, prisoner_id: defendant.id, prisoner_type: 2)
-  # PrisonerIncident.find_or_create_by(incident_report_id: incident.id, prisoner_id: plaintiff.id)
-  # PrisonerIncident.find_or_create_by(incident_report_id: incident.id, prisoner_id: defendant.id)
-  incident_guard = Guard.first
+  seed_generator.create_description(plaintiff, defendant, incident_time)
 
-  prisoners_array.each do |prisoner|
-    if incident_guard.prisoners.include?(prisoner)
-      puts "Guard has prisoner"
-    else
-      GuardPrisoner.create(guard_id: incident_guard.id, prisoner_id: prisoner.id)
-      puts "Added prisoner to Guard"
-    end
-  end
+end
+
+Prisoner.all.each do |prisoner|
+  random_prisoner_index = rand(1..Prisoner.all.count - 1)
+  plaintiff = Prisoner.all[random_prisoner_index]
+  incident_time = Faker::Time.backward(1)
+  seed_generator.create_description(plaintiff, prisoner, incident_time)
 end
 
 puts "Created Incident Reports with Participants"

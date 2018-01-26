@@ -4,9 +4,17 @@
   <h1><%= @guard.full_name %></h1>
 
     <div>
-      <p><strong>Cell Block ID:</strong> <%= @guard.cell_block_id %></p>
+      <p><strong>Cell Block Assignment:</strong> <%= @guard.cell_block.name %></p>
       </br>
       <p><strong>Incident Reports:</strong></p>
+        <% if @guard.incident_reports.empty? %>
+          <div class="ui raised padded segment flex-column cell-block-index-segment">
+            <div>
+              <h3><em>You have not reported anyone yet!</em></h3>
+              <%= link_to "Show em who's boss", new_incident_report_path, class: "ui big orange button" %>
+            </div>
+          </div>
+        <% end %>
         <% @guard.incident_reports.each do |incident_report| %>
           <% @incident_report = incident_report%>
           <%= render partial: "/partials/incident_report_loop" %>
@@ -14,10 +22,7 @@
       </br>
 
       <h3>Prisoners:</h3>
-        <% @guard.prisoners.each do |prisoner| %>
-          <% @prisoner = prisoner %>
-          <%= render partial: "/partials/prisoner_loop" %>
-        <% end %>
+        <%= render partial: "/partials/my_prisoners" %>
     </div>
 
   </div>

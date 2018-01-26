@@ -59,7 +59,7 @@ class Prisoner < ApplicationRecord
   end
 
   def self.latest_prisoners
-    Prisoner.all.last(3)
+    Prisoner.all.last(3).reverse
   end
 
 end

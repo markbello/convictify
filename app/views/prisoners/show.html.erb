@@ -9,9 +9,13 @@
   <div>
     <br/>
     <p><strong>Cell:</strong> <%= link_to @prisoner.cell.name, @prisoner.cell %></p>
-    <p><strong>Guard:</strong>
+    <p><strong>Reporting Guards:</strong>
       <% @prisoner.guards.each do |guard| %>
-        <%= link_to guard.full_name, guard %>
+        <% if guard != @prisoner.guards.last %>
+          <%= link_to "#{guard.full_name}, ", guard %>
+        <% else %>
+          <%= link_to "#{guard.full_name}", guard %>
+        <% end %>
       <% end %>
     </p>
     <br/>
@@ -19,12 +23,15 @@
     <p><strong>Intake Date: </strong><%= @prisoner.formatted_intake_date %></p>
     <p><strong>Release Date: </strong><%= @prisoner.formatted_release_date %></p>
     <br/>
-    <p><strong>Cellmates: </strong></p>
+    <p><strong>Cellmates: </strong><% if @prisoner.cellmates.empty?  %><em>No cellmates yet...</em><% end %></p>
     <% @prisoner.cellmates.each do |prisoner| %>
       <div><%= link_to prisoner.full_name, prisoner %></div>
     <% end %>
     <br/>
     <p><strong>Incident Reports: </strong></p>
+    <% if @prisoner.incident_reports.empty? %>
+      <h3><em>Nothing to report... Yet...</em></h3>
+    <% end %>
     <% @prisoner.incident_reports.each do |incident_report| %>
       <% @incident_report = incident_report%>
       <%= render partial: "/partials/incident_report_loop" %>

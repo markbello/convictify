@@ -92,6 +92,10 @@ select:focus{
   font-size: 1em;
 }
 
+.ui.button {
+  font-family: "Open Sans", sans-serif;
+}
+
 #guard_cell_block_id {
   height: 3em;
 }

@@ -8,6 +8,7 @@ class PrisonersController < ApplicationController
   def index
     #.inmates class method eliminates the firt prisoner which is Prison Official
     @inmates = Prisoner.inmates
+    @guard = Guard.find(session[:user_id])
   end
 
   def show
@@ -24,7 +25,7 @@ class PrisonersController < ApplicationController
 
     if @prisoner.valid?
       # byebug
-      @prisoner.guards << Guard.first
+      @prisoner.guards << Guard.find(session[:user_id])
       redirect_to @prisoner
     else
       flash[:error] = @prisoner.errors.full_messages
