@@ -6,7 +6,7 @@
     <div>
       <p><strong>Cell Block Assignment:</strong> <%= @guard.cell_block.name %></p>
       </br>
-      <p><strong>Incident Reports:</strong></p>
+      <p><strong><%= @guard.incident_reports.count %> Incident Reports:</strong></p>
         <% if @guard.incident_reports.empty? %>
           <div class="ui raised padded segment flex-column cell-block-index-segment">
             <div>
