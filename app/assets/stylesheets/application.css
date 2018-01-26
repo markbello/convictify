@@ -168,13 +168,7 @@ BLOCKS
   max-width: 80vw;
 }
 
-#username {
-  margin-top: 20px;
-}
 
-#password {
-  margin-top: 20px;
-}
 
 #convict-login-footer{
   background: black;
@@ -245,6 +239,14 @@ MEDIA QUERIES
   #app-intro{
     margin-top: 80px;
     margin-right: 80px;
+  }
+
+  #username {
+    margin-top: 20px;
+  }
+
+  #password {
+    margin-top: 20px;
   }
 
   .convict-new-edit-container{
