@@ -168,6 +168,14 @@ BLOCKS
   max-width: 80vw;
 }
 
+#username {
+  margin-top: 20px;
+}
+
+#password {
+  margin-top: 20px;
+}
+
 #convict-login-footer{
   background: black;
 }
