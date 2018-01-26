@@ -1,24 +1,22 @@
 
 <div class="flex-column">
-  <div class="login-form-fields">
-   <%= form_tag sessions_path, class: "ui form convict-form-fields flex-row mobile-login" do %>
+  <div class="login-form-fields" style="width: 100vw;">
+   <%= form_tag sessions_path, class: "ui form convict-form-fields stackable flex-column mobile-login" do %>
      <div class="item">
-       <%= label_tag "Email" %>
-       <%= text_field_tag :email, nil, class: "ui input" %>
+
+       <%= text_field_tag :email, nil, placeholder: "Email", class: "ui input" %>
      </div>
      <div class="item">
-       <%= label_tag "Password" %>
-       <%= password_field_tag :password, nil, class: "ui input"%>
+
+       <%= password_field_tag :password, nil, placeholder: "Password", class: "ui input"%>
      </div>
      <div class="item">
        <%= submit_tag "Log me in", class: "ui orange button" %>
+       <a class="" href="<%= signup_path %>" style="margin-left: 30px; color:white;">Sign Up</a>
      </div>
    <% end %>
 
   </div>
 
-  <div class="item flex-row" id="mobile-login-signup">
-     <div class="header"><span>Not a Member Yet?</span></div>
-     <a class="" href="<%= signup_path %>">Sign Up</a>
-  </div>
+
 </div>

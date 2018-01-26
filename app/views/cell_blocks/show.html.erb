@@ -17,7 +17,9 @@
               <span><strong>Prisoners:</strong></span> </br>
               <ul>
                 <% cell.prisoners.each do |prisoner| %>
-                  <li><%= link_to prisoner.full_name, prisoner %></li>
+                  <% if prisoner.id != 1 %>
+                    <li><%= link_to prisoner.full_name, prisoner %></li>
+                  <% end %>
                 <% end %>
               </ul>
             </div>

@@ -74,6 +74,13 @@ input {
   font-family: "Open Sans", sans-serif;
 }
 
+.ui.form input[type='text']:focus, .ui.form input[type='password']::placeholder{
+  font-family: "Open Sans", sans-serif;
+}
+.ui.form input[type='text']:focus, .ui.form input[type='password']::placeholder:focus{
+  font-family: "Open Sans", sans-serif;
+}
+
 select:focus{
   outline-color: rgba(242, 113, 29, 1);
 }
@@ -238,16 +245,8 @@ MEDIA QUERIES
   }
 
   #app-intro{
-    margin-top: 80px;
+    margin-top: 40px;
     margin-right: 80px;
-  }
-
-  #email {
-    margin-top: 20px;
-  }
-
-  #password {
-    margin-top: 20px;
   }
 
   .convict-new-edit-container{

@@ -1,16 +1,14 @@
 
 <div class="side-login">
   <div class="login-form-fields">
+
     <%= form_tag sessions_path, class: "ui form convict-form-fields" do %>
       <div class="item">
-        <%= label_tag "Email" %>
-        <%= text_field_tag :email, nil, class: "ui input" %>
       </div>
       <div class="item">
-        <%= label_tag "Password" %>
-        <%= password_field_tag :password, nil, class: "ui input"%>
-      </div>
-      <div class="item">
+        <div class="header" style="margin-bottom: 20px;">Log In</div>
+        <%= text_field_tag :email, nil, placeholder: "Email", class: "ui input", style: "margin-bottom: 20px;" %>
+        <%= password_field_tag :password, nil, placeholder: "Password", class: "ui input", style: "margin-bottom: 20px;"%>
         <%= submit_tag "Log me in", class: "ui orange button" %>
       </div>
     <% end %>
