@@ -6,14 +6,18 @@
     <div>
       <div>
         <span><strong>Security Rating:</strong> </span><%= @cell.cell_block.security_rating %> </br>
-        <span><strong>Number of Prisoners:</strong></span> <%= @cell.prisoners.count %> </br>
+        <span><strong>Number of Prisoners:</strong></span> <%= @cell.prisoner_count %> </br>
       </div>
-      <% @cell.prisoners.each do |prisoner| %>
-        <% @prisoner = prisoner %>
-        <%= render partial: "/partials/prisoner_loop" %>
+      <div>
+        <h2>Prisoners</h2>
+        <% @cell.prisoners.each do |prisoner| %>
+        <% if prisoner.id != 1 %>
+          <% @prisoner = prisoner %>
+          <%= render partial: "/partials/prisoner_loop" %>
 
-      <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-
   </div>
 </div>

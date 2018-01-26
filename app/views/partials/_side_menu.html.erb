@@ -1,5 +1,5 @@
 <div class="item">
-  <a href="<%= incident_reports_path %>"><img src="<%= asset_path 'convictify-logo.svg' %>" max-width="250px" style="margin-top:20px;margin-bottom:20px;"/></a>
+  <a href="<%= incident_reports_path %>"><img src="<%= asset_path 'convictify-logo-bright.svg' %>" max-width="250px" style="margin-top:20px;margin-bottom:20px;"/></a>
 </div>
   <% if logged_in? %>
   <div class="item">
@@ -29,9 +29,6 @@
       <%= link_to "Logout", sessions_path, method: :delete, class: "item" %>
     </div>
     <% else %>
-    <div class="item">
-      <div class="header">Log In</div>
-    </div>
       <%= render partial: "/partials/login_form" %>
   </div>
 <% end %>

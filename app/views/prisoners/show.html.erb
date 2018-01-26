@@ -19,7 +19,10 @@
       <% end %>
     </p>
     <% if !@prisoner.incident_reports.empty? %>
-      <img class="ui small right floated image" style="margin:20px 40px" src="<%= asset_path "badges/convict-icon-01.svg" %>">
+      <div class="ui small right floated image" style="margin:20px 40px">
+        <img  src="<%= asset_path "badges/convict-icon-oj-04-1.svg" %>">
+        <div class="ui medium pointing basic orange label" style="margin-top: 20px;">Most Dangerous</div>
+      </div>
     <% end %>
     <br/>
     <p><strong>Conviction:</strong> <%= @prisoner.conviction %></p>
