@@ -6,19 +6,21 @@
     </div>
   <% end %>
   <% @guard.prisoners.each do |prisoner| %>
-    <div>
+    <% if prisoner.id != 1 %>
+      <div>
 
-      <p>
-        <strong><%= link_to prisoner.full_name, prisoner %></strong> <em>(<%=  prisoner.nickname %>)</em> <br/>
-      </p>
-      <p>
-        <strong>Conviction: </strong><%= prisoner.conviction %>
-      </p>
-      <p>
-        <strong>Intake Date:</strong> <%= prisoner.formatted_intake_date  %> <br/>
-        <strong>Release Date:</strong> <%= prisoner.formatted_release_date  %>
-      </p>
-      <br/>
-    </div>
+        <p>
+          <strong><%= link_to prisoner.full_name, prisoner %></strong> <em>(<%=  prisoner.nickname %>)</em> <br/>
+        </p>
+        <p>
+          <strong>Conviction: </strong><%= prisoner.conviction %>
+        </p>
+        <p>
+          <strong>Intake Date:</strong> <%= prisoner.formatted_intake_date  %> <br/>
+          <strong>Release Date:</strong> <%= prisoner.formatted_release_date  %>
+        </p>
+        <br/>
+      </div>
+    <% end %>
   <% end %>
 </div>

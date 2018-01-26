@@ -18,8 +18,9 @@
         <% end %>
       <% end %>
     </p>
-    <img class="ui small right floated image" style="margin:20px 40px" src="<%= asset_path "badges/convict-icon-01.svg" %>">
-
+    <% if !@prisoner.incident_reports.empty? %>
+      <img class="ui small right floated image" style="margin:20px 40px" src="<%= asset_path "badges/convict-icon-01.svg" %>">
+    <% end %>
     <br/>
     <p><strong>Conviction:</strong> <%= @prisoner.conviction %></p>
     <p><strong>Intake Date: </strong><%= @prisoner.formatted_intake_date %></p>
