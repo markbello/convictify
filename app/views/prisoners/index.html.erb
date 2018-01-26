@@ -4,7 +4,8 @@
   <% @guard = Guard.find(session[:user_id]) %>
   <%= render partial: "/partials/my_prisoners" %>
 
-  <% else  %>
-    <%= render partial: "/partials/leaderboard" %>
-  <% end %>
+  <% end  %>
+
+  <%= render partial: "/partials/leaderboard" %>
+
 </div>

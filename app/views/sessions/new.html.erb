@@ -1,50 +1,15 @@
 <div class="convict-index-show-container flex-column">
+  <div id="app-intro">
+    <h3 text-align="center">“What are you in for?”</h3><br/>
 
-  <div>
-    <h1>Leaderboard</h1>
+    <p>Even we couldn’t tell you! Convictify is a misanthropic, text-based adventure for your friends and family- favorite politicians- really anyone you think could use a dose of good-ol’ American-style mass incarceration.</p><br/>
 
-    <div class="ui raised padded segment flex-column cell-block-index-segment">
-      <h2>Most Recent Incidents</h2>
+    <p>Just give us a name and hit the big orange button- our <strong>Convictify Justice Generator</strong> will do the rest. We’ll convict your mark on the spot for a crime of our choice, and let the games begin!</p><br/>
 
-      <% @latest_incident_reports.each do |incident_report| %>
-        <div>
-          <h3><%= link_to incident_report.prisoners.first.full_name, incident_report %> (Cell: <%= link_to  incident_report.prisoners.first.cell.name, incident_report.prisoners.first.cell %>)</h3>
-          <p><%= incident_report.incident_type.name %> </p>
-          <p><strong>Content:</strong> <%= incident_report.short_desc  %></p>
-        </div>
+    <p>As a Convictify-er you’ll get to file incident reports against prisoners, based on our prison’s Byzantine code of conduct. Peruse the back-log of incident reports while you’re at it, or check out who your person’s cell mates are. <em>Get lost in our paperwork.</em></p><br/>
 
-        <p><%= link_to "View Report", incident_report %></p>
-        <% if incident_report != @latest_incident_reports.last %>
-          <div class="ui divider"></div>
-        <% end %>
-      <% end %>
-    </div>
+    <p>The people you Convictify will occasionally wind up in some peculiar incidents. Your prisoners are likely to ask you to foot the bill for these, so make sure our emails stay out of your spam trap! Your contributions will keep the paperwork flowing and maybe even keep your prisoners safe.</p><br/>
 
-    <div class="ui raised padded segment flex-column cell-block-index-segment">
-      <h2>Newest Prisoners</h2>
-
-      <% @latest_prisoners.each do |prisoner| %>
-        <div>
-          <p>
-            <strong><%= link_to prisoner.full_name, prisoner %></strong> <em>(<%=  prisoner.nickname %>)</em> <br/>
-          </p>
-          <p>
-            <strong>Conviction: </strong><%= prisoner.conviction %>
-          </p>
-          <p>
-            <strong>Intake Date:</strong> <%= prisoner.formatted_intake_date  %> <br/>
-            <strong>Release Date:</strong> <%= prisoner.formatted_release_date  %>
-          </p>
-          <br/>
-        </div>
-        <% if prisoner != @latest_prisoners.last %>
-          <div class="ui divider"></div>
-        <% end %>
-      <% end %>
-    </div>
-
-
-
+    <p><em>(Safety not guaranteed)</em></p>
   </div>
-
 </div>

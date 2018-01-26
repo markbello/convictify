@@ -6,6 +6,7 @@ FONTS
 * {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  letter-spacing: .3px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -167,6 +168,22 @@ BLOCKS
   max-width: 80vw;
 }
 
+#convict-login-footer{
+  background: black;
+}
+
+#convict-login-footer label{
+  color:white;
+}
+
+#convict-login-footer span{
+  color:white;
+}
+
+#intro-container{
+  margin-right: 40px;
+}
+
 /*****************
 MEDIA QUERIES
 *****************/
@@ -174,6 +191,10 @@ MEDIA QUERIES
 @media screen and (max-width: 1024px){
   #side-menu{
     display: none;
+  }
+
+  #app-intro{
+    margin-top: -80px;
   }
 
   .convict-new-edit-container{
@@ -186,11 +207,36 @@ MEDIA QUERIES
     margin: 120px 90px;
   }
 
+  .mobile-login{
+    justify-content: baseline;
+    margin: 30px 40px 20px 40px;
+  }
+
+  .mobile-login label{
+    margin-right: 30px;
+  }
+
+  #mobile-login-signup{
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  #mobile-login-signup div.header{
+    margin-right: 30px;
+  }
+
 }
+
+
 
 @media screen and (min-width: 1025px){
   #top-menu{
     display:none;
+  }
+
+  #app-intro{
+    margin-top: 80px;
+    margin-right: 80px;
   }
 
   .convict-new-edit-container{
