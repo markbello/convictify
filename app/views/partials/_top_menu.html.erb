@@ -9,7 +9,7 @@
         <img src="<%= asset_path 'convictify-logo-rct-bright.svg' %>" style="margin: 40px 20px" class="ui image small"/>
         <a href="<%= incident_reports_path %>"></a>
       </div>
-      <div class="borderless right menu" style="margin-right: 40px;">
+      <div class="borderless stackable right menu" style="margin-right: 40px;">
         <a class="item" href="<%= leaderboard_path %>">Leaderboard</a>
         <a class="item" href="<%= incident_reports_path %>">Incident Reports</a>
         <a class="item" href="<%= guard_path(Guard.find(session[:user_id]))%>">My Profile</a>
