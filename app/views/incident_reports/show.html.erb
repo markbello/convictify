@@ -2,6 +2,9 @@
 <div class="convict-index-show-container flex-column" >
   <div>
     <h1>Incident Report</h1>
+    <p><em>Filed: <%= @incident_report.formatted_date %></em></p>
+    <br/>
+    <h2>Content</h2>
     <p><%= @incident_report.content %></p>
 
     <h2>Incident Type</h2>

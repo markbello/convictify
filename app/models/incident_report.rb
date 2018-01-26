@@ -28,4 +28,8 @@ class IncidentReport < ApplicationRecord
     self.content[0..75].gsub(/\s\w+\s*$/,'...')
   end
 
+  def formatted_date
+    self.created_at.strftime "%B %d, %Y"
+  end
+
 end
