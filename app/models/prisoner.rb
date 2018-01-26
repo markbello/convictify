@@ -5,6 +5,7 @@ class Prisoner < ApplicationRecord
   has_many :incident_reports, through: :incident_participants
   has_many :guard_prisoners
   has_many :guards, through: :guard_prisoners
+  has_many :badges
 
   validates :first_name, presence: true
   validates :last_name, presence: true

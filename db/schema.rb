@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124203800) do
+ActiveRecord::Schema.define(version: 20180126005558) do
 
   create_table "cell_blocks", force: :cascade do |t|
     t.string "name"
@@ -72,6 +72,12 @@ ActiveRecord::Schema.define(version: 20180124203800) do
     t.integer "severity_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prisoner_badges", force: :cascade do |t|
+    t.integer "prisoner_id"
+    t.string "name"
+    t.index ["prisoner_id"], name: "index_prisoner_badges_on_prisoner_id"
   end
 
   create_table "prisoners", force: :cascade do |t|
