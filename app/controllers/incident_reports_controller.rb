@@ -37,6 +37,8 @@ class IncidentReportsController < ApplicationController
     @incident_participant_plaintiff.save
     @incident_participant_defendant.save
 
+    
+
     if @incident_report.valid?
       redirect_to @incident_report
     else
