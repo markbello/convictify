@@ -20,7 +20,7 @@
     </p>
     <% if !@prisoner.incident_reports.empty? %>
       <div class="ui small right floated image" style="margin:20px 40px">
-        <img  src="<%= asset_path "badges/convict-icon-oj-04-1.svg" %>">
+        <img  src="<%= asset_path "badges/convict-icon-1pt.svg" %>">
         <div class="ui medium pointing basic orange label" style="margin-top: 20px;">Most Dangerous</div>
       </div>
     <% end %>
@@ -29,12 +29,17 @@
     <p><strong>Intake Date: </strong><%= @prisoner.formatted_intake_date %></p>
     <p><strong>Release Date: </strong><%= @prisoner.formatted_release_date %></p>
     <br/>
+    <p><strong>Frequent Perpetrator: </strong><%= @prisoner.most_common_incidents_as_plaintiff %></p>
+    <p><strong>Frequent Victim: </strong><%= @prisoner.most_common_incidents_as_defendant %></p>
+    <br/>
     <p><strong>Cellmates: </strong><% if @prisoner.cellmates.empty?  %><em>No cellmates yet...</em><% end %></p>
     <% @prisoner.cellmates.each do |prisoner| %>
       <div><%= link_to prisoner.full_name, prisoner %></div>
     <% end %>
     <br/>
-    <p><strong>Incident Reports: </strong></p>
+    <p><strong><%= @prisoner.incident_reports.count %> Incident Reports: </strong></p>
+    <br/>
+
     <% if @prisoner.incident_reports.empty? %>
       <h3><em>Nothing to report... Yet...</em></h3>
     <% end %>

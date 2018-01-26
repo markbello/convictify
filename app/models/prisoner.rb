@@ -50,6 +50,60 @@ class Prisoner < ApplicationRecord
     cellmates
   end
 
+  def most_common_incidents_total
+    prisoner_incidents = []
+
+    prisoner_incident_types = self.incident_reports.map do |incident_report|
+      incident_report.incident_type
+    end
+
+    prisoner_incidents += prisoner_incident_types
+
+    freq = prisoner_incidents.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    most_frequent = prisoner_incidents.max_by { |v| freq[v] }
+  end
+
+  def most_common_incidents_as_plaintiff
+
+    prisoner_incidents = self.incident_reports.select do |incident_report|
+      incident_report.plaintiffs.include?(self.id)
+    end
+
+    prisoner_incident_types = prisoner_incidents.map do |incident_report|
+      incident_report.incident_type
+    end
+
+    freq = prisoner_incident_types.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    most_frequent = prisoner_incident_types.max_by { |v| freq[v] } || IncidentType.first
+    most_frequent.name
+  end
+
+  def most_common_incidents_as_defendant
+
+    prisoner_incidents = self.incident_reports.select do |incident_report|
+      incident_report.defendants.include?(self.id)
+    end
+
+    prisoner_incident_types = prisoner_incidents.map do |incident_report|
+      incident_report.incident_type
+    end
+
+    freq = prisoner_incident_types.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    most_frequent = prisoner_incident_types.max_by { |v| freq[v] } || IncidentType.first
+    most_frequent.name
+  end
+
+
+  def self.most_dangerous_prisoner
+    assaultive_prisoners = inmates.select do |prisoner|
+      prisoner.most_common_incidents.id = 2
+    end
+
+    freq = assaultive_prisoners.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    most_dangerous = assaultive_prisoners.max_by { |v| freq[v] }
+
+  end
+
   def self.inmates
     inmates = []
     Prisoner.all.each do |prisoner|
