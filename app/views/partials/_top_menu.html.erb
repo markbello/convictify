@@ -3,16 +3,20 @@
 
 <div id="top-menu">
   <% if logged_in? %>
-    <div class="ui top fixed borderless menu" >
-      <div class="item" style="margin-top: 40px;">
-        <img src="<%= asset_path 'convictify-logo-rct-bright.svg' %>" class="ui centered image medium"/>
+
+    <div class="ui top fixed secondary borderless menu" >
+      <div class="item" >
+        <img src="<%= asset_path 'convictify-logo-rct-bright.svg' %>" style="margin: 40px 20px" class="ui image small"/>
         <a href="<%= incident_reports_path %>"></a>
       </div>
-      <a class="item" href="<%= leaderboard_path %>">Leaderboard</a>
-      <a class="item" href="<%= incident_reports_path %>">Incident Reports</a>
-      <a class="item" href="<%= guard_path(Guard.find(session[:user_id]))%>">My Profile</a>
-      <%= link_to "Logout", sessions_path, method: :delete, class: "item" %>
+      <div class="borderless right menu" style="margin-right: 40px;">
+        <a class="item" href="<%= leaderboard_path %>">Leaderboard</a>
+        <a class="item" href="<%= incident_reports_path %>">Incident Reports</a>
+        <a class="item" href="<%= guard_path(Guard.find(session[:user_id]))%>">My Profile</a>
+        <%= link_to "Logout", sessions_path, method: :delete, class: "item" %>
+      </div>
     </div>
+
   <% else %>
     <div class="item" style="margin-top: 40px;">
       <img src="<%= asset_path 'convictify-logo-rct-bright.svg' %>" class="ui centered image medium" />
