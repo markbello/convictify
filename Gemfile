@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Fakes names
 gem 'faker'
+
+gem 'factory-helper'
+
 # Validate e-mail addresses against RFC 2822 and RFC 3696.
 gem 'validates_email_format_of'
 
